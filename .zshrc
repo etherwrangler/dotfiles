@@ -72,7 +72,7 @@ ZSH_THEME="cobalt2"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(aliases git python pipenv pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,6 +104,13 @@ source $ZSH/oh-my-zsh.sh
 
 alias python=python3
 alias pip=pip3
+alias src='source ~/.zshrc'
+
+# If we are on WSL2 and have HomeBrew installed we need to add it to the path
+if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+    export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+    export PATH="$PATH:$BREW_HOME"
+fi
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
