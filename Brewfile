@@ -2,24 +2,26 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
+# Automate deployment, configuration, and upgrading
 brew "ansible"
+# GitHub command-line tool
+brew "gh"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# User interface to the TELNET protocol
 brew "telnet"
+# Yet Another Dotfiles Manager
 brew "yadm"
+# Reimagine your terminal
 cask "fig"
+# Developer targeted fonts with a high number of glyphs
 cask "font-meslo-lg-nerd-font"
+# Terminal built on web technologies
 cask "hyper"
+# Command-line shell and scripting language
 cask "powershell"
+# System monitor for the menu bar
 cask "stats"
-vscode "jamiewoodio.cisco"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-python.isort"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-toolsai.jupyter"
-vscode "ms-toolsai.vscode-jupyter-cell-tags"
-vscode "ms-toolsai.vscode-jupyter-slideshow"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode.powershell"
-vscode "wesbos.theme-cobalt2"
-vscode "withfig.fig"
+# Open-source code editor
+cask "visual-studio-code"
