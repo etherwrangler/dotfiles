@@ -108,8 +108,9 @@ alias src='source ~/.zshrc'
 
 # If we are on WSL2 and have HomeBrew installed we need to add it to the path
 if [ -d "/home/linuxbrew/.linuxbrew" ]; then
-    export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-    export PATH="$PATH:$BREW_HOME"
+    export BREW_BIN="/home/linuxbrew/.linuxbrew/bin"
+    export BREW_SBIN="/home/linuxbrew/.linuxbrew/sbin"
+    export PATH="$BREW_BIN:$BREW_SBIN:$PATH"
 fi
 
 # Fig post block. Keep at the bottom of this file.
