@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias bbd='cd ~; rm -f Brewfile; brew bundle dump --casks --taps --brews'
 alias python=python3
 alias pip=pip3
 alias src='source ~/.zshrc'
