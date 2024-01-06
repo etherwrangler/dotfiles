@@ -10,9 +10,12 @@ Host github.com
   User git
   IdentityFile ~/.ssh/id_ed25519_github
 
-Host git.hfam.net
-  User git
-  IdentityFile ~/.ssh/id_ed25519_hfam  
+Host logserv
+  Hostname logserv.at.hfam.net
+
+Host logserv *.at.hfam.net
+  User daniel
+  IdentityFile ~/.ssh/id_ed25519_at.hfam.net  
 
 Host 172.*
   HostkeyAlgorithms ssh-rsa

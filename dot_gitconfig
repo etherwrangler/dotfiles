@@ -1,0 +1,9 @@
+[user]
+	name = etherwrangler
+	email = 7719442+etherwrangler@users.noreply.github.com
+[color]
+	ui = true
+[core]
+	editor = code --wait
+[init]
+	defaultBranch = main
