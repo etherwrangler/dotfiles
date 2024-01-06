@@ -1,0 +1,26 @@
+#Ignore MacOS only values on other OS
+IgnoreUnknown UseKeychain
+
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_github
+
+Host logserv
+  Hostname logserv.at.hfam.net
+
+Host logserv *.at.hfam.net
+  User daniel
+  IdentityFile ~/.ssh/id_ed25519_at.hfam.net  
+
+Host 172.*
+  HostkeyAlgorithms ssh-rsa
+  KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+
+# Fig ssh integration. Keep at the bottom of this file.
+Match all
+  Include ~/.fig/ssh
