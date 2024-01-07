@@ -26,7 +26,7 @@ ZSH_THEME="cobalt2"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
@@ -106,13 +106,6 @@ alias bbd='cd ~; rm -f Brewfile; brew bundle dump --casks --taps --brews'
 alias python=python3
 alias pip=pip3
 alias src='source ~/.zshrc'
-
-# If we are on WSL2 and have HomeBrew installed we need to add it to the path
-if [ -d "/home/linuxbrew/.linuxbrew" ]; then
-    export BREW_BIN="/home/linuxbrew/.linuxbrew/bin"
-    export BREW_SBIN="/home/linuxbrew/.linuxbrew/sbin"
-    export PATH="$BREW_BIN:$BREW_SBIN:$PATH"
-fi
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
