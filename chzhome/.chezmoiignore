@@ -1,17 +1,20 @@
 README.md
 .oh-my-zsh/cache/**
 
-# Ignore HyperTerminal config file on incorrect platforms
-{{ if eq .chezmoi.os "windows" }}
-.hyper.js
-{{ end }}
-{{ if eq .chezmoi.os "linux" }}
-{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-.hyper.js
-{{   end }}
+# Ignore files on non-Windows that don't apply
+{{ if ne .chezmoi.os "windows" }}
+AppData/*
 {{ end }}
 
 # Ignore files on Windows that don't apply
 {{ if eq .chezmoi.os "windows" }}
 .zshrc
+.hyper.js
+{{ end }}
+
+# Ignore files on WSL that don't apply
+{{ if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+.hyper.js
+{{   end }}
 {{ end }}
