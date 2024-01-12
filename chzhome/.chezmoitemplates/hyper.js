@@ -152,6 +152,7 @@ module.exports = {
     plugins: [
         'hyper-quit',
         //'hyperterm-cobalt2-theme',
+        'hyper-dracula',
         'hyper-statusline'
     ],
     // in development, you can create a directory under
