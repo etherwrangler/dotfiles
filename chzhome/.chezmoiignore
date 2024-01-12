@@ -3,7 +3,7 @@ README.md
 
 # Ignore files on non-Windows that don't apply
 {{ if ne .chezmoi.os "windows" }}
-AppData/*
+AppData/
 {{ end }}
 
 # Ignore files on Windows that don't apply
