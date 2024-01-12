@@ -92,10 +92,18 @@ module.exports = {
         //
         // Cygwin
         // - Example: `C:\\cygwin64\\bin\\bash.exe`
+        {{ if eq .chezmoi.os "windows" }}
+        shell: 'ubuntu.exe',
+        {{ else }}
         shell: '',
+        {{ end }}
         // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
         // by default `['--login']` will be used
+        {{ if eq .chezmoi.os "windows" }}
+        shellArgs: [],
+        {{ else }}
         shellArgs: ['--login'],
+        {{ end }}
         // for environment variables
         env: {},
         // Supported Options:
@@ -143,7 +151,7 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         'hyper-quit',
-        'hyperterm-cobalt2-theme',
+        //'hyperterm-cobalt2-theme',
         'hyper-statusline'
     ],
     // in development, you can create a directory under
@@ -151,8 +159,8 @@ module.exports = {
     // to load it and avoid it being `npm install`ed
     localPlugins: [],
     keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
+        // Example
+        // 'window:devtools': 'cmd+alt+o',
     },
 };
 //# sourceMappingURL=config-default.js.map
