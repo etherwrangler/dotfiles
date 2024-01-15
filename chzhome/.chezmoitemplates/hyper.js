@@ -151,7 +151,7 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         'hyper-quit',
-        //'hyperterm-cobalt2-theme',
+        'hyperterm-cobalt2-theme',
         'hyper-dracula',
         'hyper-statusline'
     ],
