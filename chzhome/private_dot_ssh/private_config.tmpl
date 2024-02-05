@@ -13,7 +13,10 @@ Host github.com
 Host logserv
   Hostname logserv.at.hfam.net
 
-Host logserv *.at.hfam.net
+Host debiandev
+  Hostname debiandev.at.hfam.net
+
+Host logserv debiandev *.at.hfam.net
   User daniel
   IdentityFile ~/.ssh/id_ed25519_at.hfam.net  
 
