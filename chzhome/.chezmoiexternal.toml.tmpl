@@ -1,12 +1,12 @@
 {{ if ne .chezmoi.os "windows" }}
-[".oh-my-zsh"]
-    type = "archive"
-    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-[".oh-my-zsh/custom/themes/cobalt2.zsh-theme"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/wesbos/Cobalt2-iterm/b3a40ad59f907c9d290aba8d7c7d18434aa9d662/cobalt2.zsh-theme"
-    refreshPeriod = "168h"
+# [".oh-my-zsh"]
+#    type = "archive"
+#    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+#    exact = true
+#    stripComponents = 1
+#    refreshPeriod = "168h"
+# [".oh-my-zsh/custom/themes/cobalt2.zsh-theme"]
+#     type = "file"
+#     url = "https://raw.githubusercontent.com/wesbos/Cobalt2-iterm/b3a40ad59f907c9d290aba8d7c7d18434aa9d662/cobalt2.zsh-theme"
+#     refreshPeriod = "168h"
 {{ end }}
