@@ -1,0 +1,27 @@
+packages:
+  darwin:
+    brews:
+      - 'ansible'
+      - 'gh'
+      - 'gnu-tar'
+      - 'iperf3'
+      - 'jq'
+      - 'mtr'
+      - 'neovim'
+      - 'nmap'
+      - 'node'
+      - 'starship'
+      - 'sshpass'
+      - 'telnet'
+      - 'tmux'
+    casks:
+      - 'active-trader-pro'
+      - 'appcleaner'
+      - 'dotnet-sdk'
+      - 'font-jetbrains-mono-nerd-font'
+      - 'font-meslo-lg-nerd-font'
+      - 'obsidian'
+      - 'powershell'
+      - 'stats'
+      - 'visual-studio-code'
+      - 'wezterm'
