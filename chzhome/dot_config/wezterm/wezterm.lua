@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 local config = {}
 
-config.color_scheme = 'Catppuccin Macchiato'
+config.color_scheme = 'Dracula (Official)'
 config.font_size = 16
 config.font = 
     wezterm.font('JetBrainsMono Nerd Font', {weight = 'Bold', italic = false})
