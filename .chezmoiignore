@@ -1,0 +1,7 @@
+# Files to ignore on Windows
+{{ if ne .chezmoi.os "windows" }}
+.config/wezterm/wezterm.lua
+{{ end }}
+
+# Files to ignore if not on Windows
+
