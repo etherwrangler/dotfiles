@@ -1,7 +1,10 @@
 # Files to ignore on Windows
-{{ if ne .chezmoi.os "windows" }}
+{{ if .chezmoi.os "windows" }}
 .config/wezterm/wezterm.lua
 {{ end }}
 
-# Files to ignore if not on Windows
-
+# Files to ignore if not on Arch
+{{ if ne .chezmoi.osid "linux-arch" }}
+.config/hypr
+.config/waybar
+{{ end -}}
