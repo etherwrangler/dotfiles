@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brew := list
+    "ansible"
+    "gh"
+    "gnu-tar"
+    "iperf3"
+    "jq"
+    "mtr"
+    "neovim"
+    "nmap"
+    "node"
+    "starship"
+    "sshpass"
+    "telnet"
+    "tmux" -}}
+{{ $casks := list
+    "active-trader-pro"
+    "appcleaner"
+    "dotnet-sdk"
+    "font-jetbrains-mono-nerd-font"
+    "font-meslo-lg-nerd-font"
+    "obsidian"
+    "powershell"
+    "stats"
+    "visual-studio-code"
+    "wezterm" -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF

@@ -1,5 +1,13 @@
+# Files to ignore if not on MacOS
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+{{ end }}
+
 # Files to ignore on Windows
-{{ if eq .chezmoi.os "windows" }}
+{{ if ne .chezmoi.os "windows" }}
+.chezmoiscripts/windows/**
+Documents
+{{ else }}
 .config/wezterm
 .config/nvim
 .config/starship.toml
