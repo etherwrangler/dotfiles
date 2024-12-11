@@ -1,6 +1,7 @@
 # Files to ignore on Windows
 {{ if .chezmoi.os "windows" }}
-.config/wezterm/wezterm.lua
+dot_config/wezterm/wezterm.lua
+.zshrc
 {{ end }}
 
 # Files to ignore if not on Arch
