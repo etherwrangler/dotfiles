@@ -1,7 +1,32 @@
+{{/* boolean feature tags */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
+
+{{/* detect if linux and then add the distro the osid variable */}}
 {{- $osid := .chezmoi.os -}}
-{{- if hasKey .chezmoi.osRelease "id" -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
 
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{- if not (or ($ephemeral) ($headless) ) }}
+{{- $personal = promptBoolOnce . "personal" "Install Personal Software and Secrets" -}}
+{{- $work = promptBoolOnce . "work" "Is this a work device" -}}
+{{- $headless = promptBoolOnce . "headless" "headless" -}}
+{{- $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{- end -}}
+
 [data]
+    ephemeral = {{ $ephemeral }}
+    headless = {{ $headless }}
     osid = {{ $osid | quote }}
+    personal = {{$personal | quote }}
+    work = {{$work | quote }}
