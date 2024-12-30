@@ -1,0 +1,22 @@
+{{ if .personal -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $brews := list 
+    -}}
+{{ $casks := list
+    "webex"
+    "wireshark" -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+{{ end -}}
