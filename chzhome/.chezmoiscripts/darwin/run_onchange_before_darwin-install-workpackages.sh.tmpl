@@ -5,7 +5,10 @@ set -eufo pipefail
 {{ if .work -}}
 
 {{ $brews := list 
-    -}}
+    "cidr2range"
+    "grepcidr"
+    "range2cidr"
+    "trippy" -}}
 {{ $casks := list
     "webex"
     "wireshark" -}}
