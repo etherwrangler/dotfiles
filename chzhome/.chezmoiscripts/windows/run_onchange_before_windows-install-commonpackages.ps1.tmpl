@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "windows" -}}
+
+{{ $packages := list
+    "Microsoft.PowerShell"
+    "Microsoft.VisualStudioCode
+    "Starship.Starship" -}}
+
+{{- range .packages.windows.winget -}}
+winget install -e --disable-interactivity --silent --accept-source-agreements --accept-package-agreements --id {{ . | quote }}
+{{ end -}}
+
+{{ end -}}
