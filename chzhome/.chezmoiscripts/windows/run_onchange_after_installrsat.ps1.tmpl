@@ -1,0 +1,29 @@
+{{ if .work -}}
+
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+    if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+        Write-Host '---(i) INFO: Executing this script in an elevated PowerShell instance'
+
+        $CommandLine = "-ExecutionPolicy ByPass -NoExit -File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+        Start-Process -FilePath PowerShell.exe -Verb RunAs -ArgumentList $CommandLine
+
+        Write-Host -NoNewLine '---(i) INFO: Execution will proceed in a separate PowerShell window. Press any key to exit...'
+        $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
+
+        Exit
+    }
+}
+
+# Install RSAT
+Write-Host '---(i) INFO: Beginning RSAT Installation'
+Add-WindowsCapability -Online -Name “Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.DHCP.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.Dns.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.FileServices.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.RemoteDesktop.Services.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.ServerManager.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.SystemInsights.Management.Tools~~~~0.0.1.0”
+Add-WindowsCapability -Online -Name “Rsat.WSUS.Tools~~~~0.0.1.0”
+
+{{ end -}}
