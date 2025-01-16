@@ -8,12 +8,17 @@ more stuff soon
 
 # Setup for Windows
 
+Set ExecutionPolicy to RemoteSigned so that scripts can run
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
 Install chezmoi (via winget)
-```shell
+```powershell
 winget install chezmoi
 ```
 
 Add dotfiles and apply settings
-```shell
+```powershell
 chezmoi init etherwrangler
 ```

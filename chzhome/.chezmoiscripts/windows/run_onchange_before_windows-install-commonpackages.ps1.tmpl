@@ -6,7 +6,7 @@
     "Starship.Starship" -}}
 
 {{- range $packages -}}
-@powershell  -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --disable-interactivity --silent --accept-source-agreements --accept-package-agreements --id {{ . | quote }}"
+powershell  -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --disable-interactivity --silent --accept-source-agreements --accept-package-agreements --id {{ . | quote }}"
 {{ end -}}
 
 {{ end -}}
