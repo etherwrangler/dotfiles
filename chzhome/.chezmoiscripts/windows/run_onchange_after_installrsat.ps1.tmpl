@@ -16,15 +16,7 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 # Install RSAT
 Write-Host '---(i) INFO: Beginning RSAT Installation'
-Add-WindowsCapability -Online -Name “Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.DHCP.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.Dns.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.FileServices.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.RemoteDesktop.Services.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.ServerManager.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.SystemInsights.Management.Tools~~~~0.0.1.0”
-Add-WindowsCapability -Online -Name “Rsat.WSUS.Tools~~~~0.0.1.0”
+Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
 Write-Host '---(i) INFO: RSAT Installation complete'
 
 {{ end -}}
