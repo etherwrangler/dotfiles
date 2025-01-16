@@ -5,7 +5,7 @@
     "Microsoft.VisualStudioCode"
     "Starship.Starship" -}}
 
-{{- range packages -}}
+{{- range $packages -}}
 winget install -e --disable-interactivity --silent --accept-source-agreements --accept-package-agreements --id {{ . | quote }}
 {{ end -}}
 
