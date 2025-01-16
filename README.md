@@ -5,3 +5,15 @@ Install chezmoi (via homebrew)
 brew install chezmoi
 ```
 more stuff soon
+
+# Setup for Windows
+
+Install chezmoi (via winget)
+```shell
+winget install chezmoi
+```
+
+Add dotfiles and apply settings
+```shell
+chezmoi init etherwrangler
+```
