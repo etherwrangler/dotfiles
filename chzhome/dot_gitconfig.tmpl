@@ -2,4 +2,9 @@
 	name = etherwrangler
 	email = 7719442+etherwrangler@users.noreply.github.com
 [init]
-  defaultBranch = main
+	defaultBranch = main
+
+{{ if eq .chezmoi.os "windows" }}
+[core]
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+{{ end }}
