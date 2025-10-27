@@ -23,3 +23,8 @@ Documents
 .config/hypr
 .config/waybar
 {{ end }}
+
+# Files to ignore on headless systems
+{{ if .headless }}
+.config/wezterm
+{{ end }}
