@@ -1,0 +1,25 @@
+{{ if eq .osid "linux-debian" -}}
+
+{{ $packages := list
+    "curl"
+    "git"
+    "jq"
+    "neovim"
+    "tealdeer"
+    "starship"
+    "zsh" -}}
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+#!/bin/bash
+
+set -eufo pipefail
+
+{{ $sudo }} pacman -Syy
+{{ $sudo }} pacman -Syu
+{{ $sudo }} pacman -S --needed {{ $packages | join " " }}
+
+{{ end -}}
