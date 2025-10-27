@@ -18,8 +18,7 @@
 
 set -eufo pipefail
 
-{{ $sudo }} pacman -Syy
-{{ $sudo }} pacman -Syu
-{{ $sudo }} pacman -S --needed {{ $packages | join " " }}
+{{ $sudo }} apt update
+{{ $sudo }} apt install {{ $packages | join " " }}
 
 {{ end -}}
