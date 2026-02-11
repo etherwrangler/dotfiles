@@ -20,5 +20,6 @@ set -eufo pipefail
 
 {{ $sudo }} apt update
 {{ $sudo }} apt install {{ $packages | join " " }}
+chsh -s $(which zsh)
 
 {{ end -}}
