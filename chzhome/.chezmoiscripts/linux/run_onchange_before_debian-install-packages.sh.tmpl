@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-debian" -}}
+{{ if and (eq .osid "linux-debian") (not .nopackages) -}}
 
 {{ $packages := list
     "curl"

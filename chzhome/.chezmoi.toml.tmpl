@@ -1,6 +1,7 @@
 {{/* boolean feature tags */}}
 {{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $nopackages := false -}}{{/* true if this machine should not install any packages */}}
 {{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- "" -}}
@@ -20,6 +21,7 @@
 {{- if not (or ($ephemeral) ($headless) ) }}
 {{- $personal = promptBoolOnce . "personal" "Install Personal Software and Secrets" -}}
 {{- $work = promptBoolOnce . "work" "Is this a work device" -}}
+{{- $nopackages = promptBoolOnce . "nopackages" "Block package installation?" -}}
 {{- $headless = promptBoolOnce . "headless" "headless" -}}
 {{- $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
 {{- end -}}

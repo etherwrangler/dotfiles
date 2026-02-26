@@ -14,3 +14,17 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 winget install chezmoi
 chezmoi init etherwrangler
 ```
+
+# Setup for Linux
+
+## Debian
+
+Install Chezmoi
+```shell
+sh -c "$(curl -fsLS get.chezmoi.io)"
+```
+
+Init the Repo
+```shell
+chezmoi init etherwrangler
+```
