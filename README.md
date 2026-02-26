@@ -21,7 +21,11 @@ chezmoi init etherwrangler
 
 Install Chezmoi
 ```shell
+# With curl
 sh -c "$(curl -fsLS get.chezmoi.io)"
+
+# With wget
+sh -c "$(wget -qO- get.chezmoi.io)" 
 ```
 
 Init the Repo
