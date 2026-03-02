@@ -4,7 +4,7 @@ return {
     adjust_window_size_when_changing_font_size = false,
     initial_cols = 100,
     initial_rows = 30,
-    color_scheme = 'Catppuccin Macchiato',
+    color_scheme = 'Catppuccin Mocha',
     font_size = 16,
     font = wezterm.font('JetBrainsMono Nerd Font'),
     hide_tab_bar_if_only_one_tab = true,
