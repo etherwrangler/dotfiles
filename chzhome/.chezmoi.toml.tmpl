@@ -21,9 +21,7 @@
 {{- if not (or ($ephemeral) ($headless) ) }}
 {{- $personal = promptBoolOnce . "personal" "Install Personal Software and Secrets" -}}
 {{- $work = promptBoolOnce . "work" "Is this a work device" -}}
-{{- $nopackages = promptBoolOnce . "nopackages" "Block package installation?" -}}
-{{- $headless = promptBoolOnce . "headless" "headless" -}}
-{{- $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{- $nopackages = promptBoolOnce . "nopackages" "Block package installation" -}}
 {{- end -}}
 
 [data]
