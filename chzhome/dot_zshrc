@@ -13,7 +13,7 @@ if [[ -d "/opt/nvim-linux-x86_64" ]]; then
   export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 fi
 # bin folder in local profile
-if [[ -d "~/bin" ]]; then
+if [[ -d "$HOME/bin" ]]; then
   export PATH="$PATH:~/bin"
 fi
 
