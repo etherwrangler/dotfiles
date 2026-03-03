@@ -14,7 +14,7 @@ if [[ -d "/opt/nvim-linux-x86_64" ]]; then
 fi
 # bin folder in local profile
 if [[ -d "$HOME/bin" ]]; then
-  export PATH="$PATH:~/bin"
+  export PATH="$PATH:$HOME/bin"
 fi
 
 # Where to store zinit and its plugins
