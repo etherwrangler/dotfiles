@@ -6,11 +6,16 @@ fi
 
 # Environment Variables
 export TEALDEER_CONFIG_DIR=${HOME}/.config/tealdeer/
+if which nvim &> /dev/null; then
+  export EDITOR=nvim
+  export SUDO_EDITOR=nvim
+fi
 
 # Path additions
 # Neovim from github
 if [[ -d "/opt/nvim-linux-x86_64" ]]; then
-  export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+  export EDITOR="$(which nvim)"
+  export SUDO_EDITOR="$(which nvim)"
 fi
 # bin folder in local profile
 if [[ -d "$HOME/bin" ]]; then
