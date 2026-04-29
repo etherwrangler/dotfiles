@@ -23,12 +23,6 @@ Documents
 .chezmoiscripts/linux/**
 {{ end }}
 
-# Files to ignore if not on Arch
-{{ if ne .osid "linux-arch" }}
-.config/hypr
-.config/waybar
-{{ end }}
-
 # Files to ignore on headless systems
 {{ if .headless }}
 .config/wezterm
