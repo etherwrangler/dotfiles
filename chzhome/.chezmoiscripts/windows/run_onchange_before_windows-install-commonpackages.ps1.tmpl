@@ -1,11 +1,16 @@
+{{ if not .nopackages -}}
+
 {{ $packages := list
     "DEVCOM.JetBrainsMonoNerdFont"
     "Mozilla.Firefox"
     "Git.Git"
+    "Chrome.Chrome"
     "Microsoft.PowerShell"
     "Microsoft.VisualStudioCode"
     "Starship.Starship" -}}
 
 {{- range $packages -}}
 powershell  -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --disable-interactivity --silent --accept-source-agreements --accept-package-agreements --id {{ . | quote }}"
+{{ end -}}
+
 {{ end -}}
