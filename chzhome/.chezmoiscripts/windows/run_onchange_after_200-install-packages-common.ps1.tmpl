@@ -9,7 +9,7 @@ $lastFailedExitCode = 0
 {{ range .packages.windows.winget.common -}}
     Write-Host Installing winget package '{{ .}}'
     winget install `
-      --scope user --exact --source winget --id {{ . }} `
+      --exact --source winget --id {{ . }} `
       --accept-source-agreements `
       --accept-package-agreements `
       --silent `
