@@ -2,11 +2,6 @@
 
 ## Validation
 
-- Define the standard validation commands for repo changes.
-- Add a minimal validation section with safe baseline checks such as
-  `chezmoi diff`.
-- Decide how to validate chezmoi templates without applying changes.
-- Add targeted `chezmoi execute-template` examples for important templates.
 - Decide whether to use PowerShell syntax checks or linting for `.ps1` and
   `.ps1.tmpl` files.
 

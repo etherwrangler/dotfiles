@@ -93,11 +93,32 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 
 ## Validation
 
-Validation practices are still being developed. Until they are formalized,
-prefer non-mutating checks such as `chezmoi diff` and targeted template
-rendering.
+Prefer non-mutating checks. Do not run `chezmoi apply` for validation unless
+the user explicitly asks for it.
 
-Track future validation and linting work in `TODO.md`.
+- Run `chezmoi diff` as the baseline review check. If `.chezmoi.toml.tmpl`
+  changed, a warning to rerun `chezmoi init` is expected.
+- Use `chezmoi execute-template --file <template>` for targeted template
+  rendering checks.
+- For `.chezmoi.toml.tmpl`, use `chezmoi execute-template --init --file
+  chzhome/.chezmoi.toml.tmpl`. Prompt overrides are useful for fresh init
+  simulations, but `prompt*Once` values may come from existing chezmoi state.
+- For package data changes, parse the YAML data files and render the affected
+  install script templates.
+- For rendered shell script templates, write the rendered output to a temporary
+  file and run `sh -n` on that output.
+
+Examples:
+
+```sh
+chezmoi diff
+ruby -e 'require "yaml"; YAML.load_file("chzhome/.chezmoidata/darwin-packages.yaml")'
+chezmoi execute-template --file chzhome/.chezmoiscripts/darwin/run_onchange_after_200-install-packages-common.sh.tmpl
+chezmoi execute-template --init --file chzhome/.chezmoi.toml.tmpl
+```
+
+PowerShell syntax checks and dedicated linting are not yet standardized; track
+future validation and linting work in `TODO.md`.
 
 ## Git Workflow
 
