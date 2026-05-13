@@ -4,11 +4,11 @@ packages:
       common:
         - DEVCOM.JetBrainsMonoNerdFont
         - Git.Git
-        - Mozilla.Firefox
         - Microsoft.PowerShell
-        - Microsoft.VisualStudioCode
-        - Starship.Starship
         - Microsoft.VCRedist.2015+.x64
         - Microsoft.VCRedist.2015+.x86
+        - Microsoft.VisualStudioCode
+        - Mozilla.Firefox
+        - Starship.Starship
       personal:
       work:
