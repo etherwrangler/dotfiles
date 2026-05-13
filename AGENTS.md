@@ -25,6 +25,9 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 
 - `ephemeral`
 - `headless`
+- `devtools`
+- `games`
+- `ittools`
 - `nopackages`
 - `personal`
 - `work`
@@ -42,8 +45,8 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 - Each OS should have its own package data file.
 - Package data should use a consistent shape across operating systems.
 - Package IDs should be alphabetized within their group.
-- Package groups should use `common`, `personal`, and `work` unless there is a
-  clear reason to add another group.
+- Package groups should use `common`, `devtools`, `games`, `ittools`,
+  `personal`, and `work` unless there is a clear reason to add another group.
 
 ## Install Script Expectations
 

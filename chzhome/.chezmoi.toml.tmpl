@@ -1,6 +1,9 @@
 {{/* boolean feature tags */}}
 {{$ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
 {{$headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{$devtools := false -}}{{/* true if this machine should have development tools */}}
+{{$games := false -}}{{/* true if this machine should have games */}}
+{{$ittools := false -}}{{/* true if this machine should have IT and network tools */}}
 {{$work := false -}}{{/* true if this machine is a work machine */}}
 {{$nopackages := false -}}{{/* true if this machine should not install any packages */}}
 {{$personal := false -}}{{/* true if this machine should have personal secrets */}}
@@ -20,14 +23,20 @@
 {{- if not (or ($ephemeral) ($headless) ) }}
 {{- $nopackages = promptBoolOnce . "nopackages" "Block package installation" -}}
 {{- if not $nopackages -}} 
+{{-     $devtools = promptBoolOnce . "devtools" "Install Development Tools" -}}
+{{-     $games = promptBoolOnce . "games" "Install Games" -}}
+{{-     $ittools = promptBoolOnce . "ittools" "Install IT and Network Tools" -}}
 {{-     $personal = promptBoolOnce . "personal" "Install Personal Software and Secrets" -}}
 {{-     $work = promptBoolOnce . "work" "Install Work Software and Secrets" -}}
 {{- end -}}
 {{- end -}}
 
 [data]
+    devtools = {{ $devtools }}
     ephemeral = {{ $ephemeral }}
+    games = {{ $games }}
     headless = {{ $headless }}
+    ittools = {{ $ittools }}
     nopackages = {{ $nopackages }}
     osid = {{ $osid | quote }}
     personal = {{$personal | quote }}

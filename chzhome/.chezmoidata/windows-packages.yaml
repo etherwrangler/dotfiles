@@ -10,5 +10,8 @@ packages:
         - Microsoft.VisualStudioCode
         - Mozilla.Firefox
         - Starship.Starship
+      devtools:
+      games:
+      ittools:
       personal:
       work:
