@@ -1,6 +1,8 @@
 {
     "recommendations": [
         "editorconfig.editorconfig",
+        "JohnnyMorganz.stylua",
+        "sumneko.lua",
         "redhat.vscode-yaml",
         "timonwong.shellcheck"
     ]
