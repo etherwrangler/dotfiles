@@ -31,6 +31,7 @@ packages:
                     - docker-desktop
                     - pgadmin4
                     - postman
+                    - wireshark-app
             games:
                 brews:
                 casks:
@@ -42,7 +43,7 @@ packages:
                     - mtr
                     - nmap
                 casks:
-                    - wireshark
+                    - wireshark-app
             personal:
                 brews:
                 casks:
