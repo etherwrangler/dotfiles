@@ -51,6 +51,10 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 ## Install Script Expectations
 
 - Install scripts should ideally be idempotent.
+- Package install script names should use explicit numeric ordering when there
+  are multiple category scripts, such as
+  `run_onchange_after_200-install-packages-common.sh.tmpl`,
+  `run_onchange_after_201-install-packages-work.sh.tmpl`, and so on.
 - If an idempotency issue is noticed, flag it.
 - Install scripts should avoid upgrades unless the user explicitly asks for
   upgrade behavior.

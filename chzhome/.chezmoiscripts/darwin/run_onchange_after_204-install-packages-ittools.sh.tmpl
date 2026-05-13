@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+{{ if and (not .nopackages) (get . "ittools") -}}
+
+brew bundle --file=/dev/stdin <<EOF
+{{ range (.packages.darwin.homebrew.ittools.brews | default (list) | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range (.packages.darwin.homebrew.ittools.casks | default (list) | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+{{ end -}}
