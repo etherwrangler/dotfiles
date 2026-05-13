@@ -1,0 +1,24 @@
+# EditorConfig is awesome: https://editorconfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file, UTF-8 charset
+# Set tabs to space and indent size to 4 spaces
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+# Markdown
+# -----------------------------------------------------------------------------
+[*.md]
+# Keep trailing whitespaces as they have meaning on Markdown interpretation.
+trim_trailing_whitespace = false
+
+# Use CRLF line endings for PowerShell scripts.
+[*.{ps1,ps1tmpl}]
+end_of_line = crlf
