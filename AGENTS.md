@@ -137,6 +137,19 @@ pwsh -NoProfile -Command '$tokens = $null; $errors = $null; $null = [System.Mana
 Dedicated linting is not yet standardized; track future linting work in
 `TODO.md`.
 
+## Linting
+
+- Linting tools are recommended but not guaranteed to be installed on every
+  target. Treat linting as an opportunistic check unless a future task
+  standardizes tool installation.
+- Run `yamllint` on YAML data files when it is available.
+- Run `shellcheck` on shell scripts when it is available. For templated shell
+  scripts, render the script first with representative override data, then run
+  `shellcheck` on the rendered output.
+- Shellcheck warnings in secondary Linux package scripts should be fixed when
+  they are straightforward, but larger behavior changes should stay aligned with
+  the Linux scope notes in `TODO.md`.
+
 ## Git Workflow
 
 - Each change and commit should address a single feature, fix, issue, or other

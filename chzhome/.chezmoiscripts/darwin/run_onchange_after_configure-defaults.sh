@@ -7,7 +7,7 @@ defaults write com.apple.dock "tilesize" -int "48"
 defaults write com.apple.dock "show-recents" -bool "false"
 
 # Screenshot Settings
-defaults write com.apple.screencapture "location" -string "~/Documents/Screenshots"
+defaults write com.apple.screencapture "location" -string "$HOME/Documents/Screenshots"
 
 # Finder Settings
 defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"

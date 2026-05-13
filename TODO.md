@@ -2,10 +2,8 @@
 
 ## Linting And Formatting
 
-- Add YAML linting.
 - Add Lua linting for Neovim and WezTerm config.
 - Decide whether to add PowerShell linting, such as PSScriptAnalyzer.
-- Decide whether to add shell linting, such as shellcheck.
 
 ## Package Data
 

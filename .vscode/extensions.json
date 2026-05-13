@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "editorconfig.editorconfig"
+        "editorconfig.editorconfig",
+        "redhat.vscode-yaml",
+        "timonwong.shellcheck"
     ]
 }
