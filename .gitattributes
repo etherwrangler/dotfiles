@@ -1,0 +1,8 @@
+# Keep repository text files LF by default.
+* text eol=lf
+
+# Windows script formats should use CRLF.
+*.ps1 text eol=crlf
+*.ps1.tmpl text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
