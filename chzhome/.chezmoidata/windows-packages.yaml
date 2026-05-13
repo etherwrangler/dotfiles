@@ -1,0 +1,12 @@
+packages:
+  windows:
+    winget:
+      common:
+        - DEVCOM.JetBrainsMonoNerdFont
+        - Git.Git
+        - Mozilla.Firefox
+        - Microsoft.PowerShell
+        - Microsoft.VisualStudioCode
+        - Starship.Starship
+      personal:
+      work:
