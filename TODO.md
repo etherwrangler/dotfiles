@@ -1,9 +1,5 @@
 # TODO
 
-## Linting And Formatting
-
-- Decide whether to add PowerShell linting, such as PSScriptAnalyzer.
-
 ## Package Data
 
 - Keep one package data file per OS.

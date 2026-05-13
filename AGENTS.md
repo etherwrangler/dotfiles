@@ -144,6 +144,7 @@ Dedicated linting is not yet standardized; track future linting work in
   standardizes tool installation.
 - Run `yamllint` on YAML data files when it is available.
 - Run `stylua --check` on Lua files when it is available.
+- Run PSScriptAnalyzer on PowerShell files when it is available.
 - Run `shellcheck` on shell scripts when it is available. For templated shell
   scripts, render the script first with representative override data, then run
   `shellcheck` on the rendered output.
