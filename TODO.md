@@ -1,11 +1,5 @@
 # TODO
 
-## Package Data
-
-- Keep one package data file per OS.
-- Keep package data shape consistent across operating systems.
-- Keep package IDs alphabetized within each group.
-
 ## Git Attributes
 
 - Add explicit binary rules if the repo starts tracking fonts, images,

@@ -42,7 +42,7 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 - Linux package management is currently outside the main project scope, but may
   be added later.
 - Package lists should live in `.chezmoidata`.
-- Each OS should have its own package data file.
+- Keep one package data file per OS.
 - Package data should use a consistent shape across operating systems.
 - Package IDs should be alphabetized within their group.
 - Package groups should use `common`, `devtools`, `games`, `ittools`,
