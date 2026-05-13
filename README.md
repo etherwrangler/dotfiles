@@ -1,3 +1,8 @@
+# Repository Notes
+
+- Repo workflow and maintenance conventions are documented in [AGENTS.md](AGENTS.md).
+- Future cleanup, validation, and linting work is tracked in [TODO.md](TODO.md).
+
 # Setup for MacOS
 
 Install chezmoi (via homebrew)
