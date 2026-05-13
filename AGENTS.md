@@ -103,22 +103,39 @@ the user explicitly asks for it.
 - For `.chezmoi.toml.tmpl`, use `chezmoi execute-template --init --file
   chzhome/.chezmoi.toml.tmpl`. Prompt overrides are useful for fresh init
   simulations, but `prompt*Once` values may come from existing chezmoi state.
-- For package data changes, parse the YAML data files and render the affected
-  install script templates.
+- For package data changes, use chezmoi itself to parse the data, for example
+  with `chezmoi data --format=yaml` or `chezmoi execute-template
+  --override-data-file <data-file> <template>`, and render the affected install
+  script templates.
 - For rendered shell script templates, write the rendered output to a temporary
-  file and run `sh -n` on that output.
+  file and run `sh -n` on that output when validating on a system with a POSIX
+  shell.
+- For rendered PowerShell templates, write the rendered output to a temporary
+  file and parse it with
+  `[System.Management.Automation.Language.Parser]::ParseFile(...)` from
+  `pwsh` or Windows PowerShell. This is a syntax check only; it should not
+  execute the script. Use a platform-appropriate temporary path.
 
 Examples:
 
 ```sh
 chezmoi diff
-ruby -e 'require "yaml"; YAML.load_file("chzhome/.chezmoidata/darwin-packages.yaml")'
+chezmoi data --format=yaml
+chezmoi execute-template --override-data-file chzhome/.chezmoidata/darwin-packages.yaml '{{ .packages.darwin.homebrew.common.brews | len }}'
 chezmoi execute-template --file chzhome/.chezmoiscripts/darwin/run_onchange_after_200-install-packages-common.sh.tmpl
 chezmoi execute-template --init --file chzhome/.chezmoi.toml.tmpl
+SCRIPT_PATH=/path/to/rendered.ps1 pwsh -NoProfile -Command '$tokens = $null; $errors = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile($env:SCRIPT_PATH, [ref]$tokens, [ref]$errors); if ($errors.Count) { $errors | ForEach-Object { Write-Error $_ }; exit 1 }'
 ```
 
-PowerShell syntax checks and dedicated linting are not yet standardized; track
-future validation and linting work in `TODO.md`.
+PowerShell equivalent for the parser check:
+
+```powershell
+$env:SCRIPT_PATH = "C:\Temp\rendered.ps1"
+pwsh -NoProfile -Command '$tokens = $null; $errors = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile($env:SCRIPT_PATH, [ref]$tokens, [ref]$errors); if ($errors.Count) { $errors | ForEach-Object { Write-Error $_ }; exit 1 }'
+```
+
+Dedicated linting is not yet standardized; track future linting work in
+`TODO.md`.
 
 ## Git Workflow
 

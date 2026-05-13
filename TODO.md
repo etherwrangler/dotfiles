@@ -1,14 +1,10 @@
 # TODO
 
-## Validation
-
-- Decide whether to use PowerShell syntax checks or linting for `.ps1` and
-  `.ps1.tmpl` files.
-
 ## Linting And Formatting
 
 - Add YAML linting.
 - Add Lua linting for Neovim and WezTerm config.
+- Decide whether to add PowerShell linting, such as PSScriptAnalyzer.
 - Decide whether to add shell linting, such as shellcheck.
 
 ## Package Data
