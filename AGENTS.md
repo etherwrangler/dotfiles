@@ -96,3 +96,5 @@ Track future validation and linting work in `TODO.md`.
 
 - Each change and commit should address a single feature, fix, issue, or other
   coherent unit of work so history remains easy to review and track.
+- Use Conventional Commits for commit messages, such as
+  `docs: add agent guidance` or `chore: add gitattributes`.
