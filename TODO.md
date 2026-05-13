@@ -18,12 +18,10 @@
 
 ## Package Data
 
-- Create a macOS package data file in `.chezmoidata`.
-- Define the macOS package data schema before migrating package install logic.
-- Move macOS package lists from scripts into `.chezmoidata`.
 - Keep one package data file per OS.
 - Keep package data shape consistent across operating systems.
 - Keep package IDs alphabetized within each group.
+- Wire macOS package install scripts to read package lists from `.chezmoidata`.
 
 ## Git Attributes
 

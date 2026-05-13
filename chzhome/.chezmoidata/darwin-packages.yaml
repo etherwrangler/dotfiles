@@ -1,0 +1,59 @@
+packages:
+    darwin:
+        homebrew:
+            common:
+                brews:
+                    - gnu-tar
+                    - neovim
+                    - sshpass
+                    - starship
+                    - tealdeer
+                    - telnet
+                    - tmux
+                casks:
+                    - alfred
+                    - appcleaner
+                    - drawio
+                    - firefox
+                    - font-jetbrains-mono-nerd-font
+                    - font-meslo-lg-nerd-font
+                    - obsidian
+                    - powershell
+                    - rectangle
+                    - visual-studio-code
+                    - wezterm
+            devtools:
+                brews:
+                    - gh
+                    - jq
+                    - node
+                casks:
+                    - docker-desktop
+                    - pgadmin4
+                    - postman
+            games:
+                brews:
+                casks:
+                    - steam
+            ittools:
+                brews:
+                    - ansible
+                    - iperf3
+                    - mtr
+                    - nmap
+                casks:
+                    - wireshark
+            personal:
+                brews:
+                casks:
+                    - discord
+            work:
+                brews:
+                    - asn
+                    - cidr2range
+                    - grepcidr
+                    - range2cidr
+                    - trippy
+                casks:
+                    - webex
+                    - wireshark
