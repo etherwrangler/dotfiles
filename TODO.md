@@ -7,11 +7,8 @@
 
 ## README
 
-- Improve setup instructions after `chezmoi init etherwrangler`.
-- Decide whether to document `chezmoi apply` in the setup flow.
-- Mention `chezmoi diff` as the preferred review step before applying changes.
-- Clarify that package installation is controlled by chezmoi prompts and
-  machine tags.
+- Add troubleshooting notes for common macOS and Windows setup failures.
+- Document how to refresh package prompt answers after machine tags change.
 
 ## Linux Scope
 
@@ -20,8 +17,5 @@
   manager behavior.
 - Review idempotency in
   `chzhome/.chezmoiscripts/linux/run_onchange_before_debian-install-packages.sh.tmpl`.
-- Avoid running `chsh -s $(which zsh)` when the user's shell is already zsh.
-- Avoid downloading and extracting the Neovim tarball when the desired version
-  is already installed.
 - Revisit the `/opt/nvim-linux-x86_64` removal/recreate flow before making
   Linux package management first-class.
