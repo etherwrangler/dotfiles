@@ -22,3 +22,8 @@ trim_trailing_whitespace = false
 # Use CRLF line endings for PowerShell scripts.
 [*.{ps1,ps1tmpl}]
 end_of_line = crlf
+
+# Lua
+[*.{lua}]
+continuation_indent = 4
+max_line_length = 100
