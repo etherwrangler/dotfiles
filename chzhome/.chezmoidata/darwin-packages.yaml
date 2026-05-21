@@ -3,13 +3,19 @@ packages:
         homebrew:
             common:
                 brews:
+                    - bat
+                    - fastfetch
+                    - fd
+                    - fzf
                     - gnu-tar
                     - neovim
+                    - ripgrep
                     - sshpass
                     - starship
                     - tealdeer
                     - telnet
                     - tmux
+                    - zoxide
                 casks:
                     - alfred
                     - appcleaner
