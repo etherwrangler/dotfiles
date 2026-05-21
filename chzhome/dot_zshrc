@@ -1,12 +1,12 @@
 
 # Setup Homebrew environment settings for MacOS
 if [[ -f "/opt/homebrew/bin/brew" ]] then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv)" # noka: ZC1046, ZC1098
 fi
 
 # Environment Variables
 export TEALDEER_CONFIG_DIR=${HOME}/.config/tealdeer/
-if which nvim &> /dev/null; then
+if command -v nvim &> /dev/null; then
   export EDITOR=nvim
   export SUDO_EDITOR=nvim
 fi
@@ -19,16 +19,16 @@ if [[ -d "/opt/nvim-linux-x86_64" ]]; then
 fi
 # bin folder in local profile
 if [[ -d "$HOME/bin" ]]; then
-  export PATH="$PATH:$HOME/bin"
+  path+=("$HOME/bin")
 fi
 
 # Where to store zinit and its plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
+if [[ ! -d "$ZINIT_HOME" ]]; then
   mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  git clone --depth 1https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # Source/Load zinit
@@ -58,7 +58,7 @@ HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
-setopt sharehistory
+setopt inc_append_history
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
@@ -83,4 +83,7 @@ alias ls='ls --color'
 
 
 # Add Starship
-eval "$(starship init zsh)"
+eval "$(starship init zsh)" # noka: ZC1046, ZC1098
+
+# must be at bottom of file. ignore zshellcheck katas filewide
+# noka: ZC1049
