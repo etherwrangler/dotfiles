@@ -33,6 +33,7 @@ packages:
                     - gh
                     - jq
                     - node
+                    - uv
                 casks:
                     - docker-desktop
                     - pgadmin4
