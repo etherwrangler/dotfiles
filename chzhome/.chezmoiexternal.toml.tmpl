@@ -1,0 +1,26 @@
+{{ if not .ephemeral }}
+{{- $xdgDataHome := env "XDG_DATA_HOME" -}}
+{{- if eq $xdgDataHome "" -}}
+{{-   $xdgDataHome = joinPath .chezmoi.homeDir ".local/share" -}}
+{{- end -}}
+{{- $homePrefix := printf "%s/" .chezmoi.homeDir -}}
+{{- $xdgDataHome = trimPrefix $homePrefix $xdgDataHome -}}
+{{- $zshPluginDir := joinPath $xdgDataHome "zsh/plugins" }}
+
+["{{ joinPath $zshPluginDir "zsh-autosuggestions" }}"]
+type = "git-repo"
+url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+refreshPeriod = "168h"
+
+["{{ joinPath $zshPluginDir "zsh-completions" }}"]
+type = "git-repo"
+url = "https://github.com/zsh-users/zsh-completions.git"
+refreshPeriod = "168h"
+
+["{{ joinPath $zshPluginDir "zsh-syntax-highlighting" }}"]
+type = "git-repo"
+url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+refreshPeriod = "168h"
+
+
+{{ end }}

@@ -1,0 +1,35 @@
+# ---------- XDG base directories ----------
+# Centralizes config/cache/data locations
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+export XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_STATE_HOME
+
+# ---------- Editor ----------
+# Default editor used by git, crontab, etc.
+# export EDITOR="nvim"
+# export VISUAL="nvim"
+
+# # ---------- Pager ----------
+# if command -v bat >/dev/null 2>&1; then
+#   export MANPAGER="bat -l man -p"
+# elif command -v batcat >/dev/null 2>&1; then
+#   export MANPAGER="batcat -l man -p"
+# fi
+
+# ---------- GPG ----------
+# Makes GPG send prompts to current terminal
+export GPG_TTY=$(tty) # noka: ZC1067
+
+# ---------- Starship ----------
+# export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
+
+# ---------- PATH ----------
+# Personal binaries/scripts
+if [[ -d "$HOME/bin" ]]; then
+  path+=("$HOME/bin")
+fi
+
+# --------- Tealdeer ---------
+export TEALDEER_CONFIG_DIR="$XDG_CONFIG_HOME/tealdeer"

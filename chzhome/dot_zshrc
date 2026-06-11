@@ -1,86 +1,25 @@
+: "${XDG_CONFIG_HOME:=$HOME/.config}"
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
+: "${XDG_STATE_HOME:=$HOME/.local/state}"
+export XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME XDG_STATE_HOME
+
+source_zsh_config() {
+  local file="$XDG_CONFIG_HOME/zsh/$1"
+  [[ -r "$file" ]] && source "$file"
+}
+
+source_zsh_config history.zsh
+source_zsh_config options.zsh
+source_zsh_config aliases.zsh
+source_zsh_config bindings.zsh
+source_zsh_config completion.zsh
+source_zsh_config plugins.zsh
 
 # Setup Homebrew environment settings for MacOS
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)" # noka: ZC1046, ZC1098
 fi
-
-# Environment Variables
-export TEALDEER_CONFIG_DIR=${HOME}/.config/tealdeer/
-if command -v nvim &> /dev/null; then
-  export EDITOR=nvim
-  export SUDO_EDITOR=nvim
-fi
-
-# Path additions
-# Neovim from github
-if [[ -d "/opt/nvim-linux-x86_64" ]]; then
-  export EDITOR="$(which nvim)"
-  export SUDO_EDITOR="$(which nvim)"
-fi
-# bin folder in local profile
-if [[ -d "$HOME/bin" ]]; then
-  path+=("$HOME/bin")
-fi
-
-# Where to store zinit and its plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-# Download Zinit, if it's not there yet
-if [[ ! -d "$ZINIT_HOME" ]]; then
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone --depth 1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Add zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-
-# Add zsh snippits
-
-
-# Load zsh autocompletions
-autoload -Uz compinit && compinit
-zinit cdreplay -q
-
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
-# History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt inc_append_history
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# Command Aliases
-alias bbd='cd ~; rm -f Brewfile; brew bundle dump --casks --taps --brews'
-alias python=python3
-alias pip=pip3
-alias src='source ~/.zshrc'
-alias ls='ls --color'
-
-# Shell Integrations
-
 
 # Add Starship
 eval "$(starship init zsh)" # noka: ZC1046, ZC1098
