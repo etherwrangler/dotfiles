@@ -15,9 +15,11 @@
         "**/zprofile",
         "**/zlogin",
         "**/zlogout",
-        "**/dot_zshrc"
+        "**/dot_zshrc",
+        "**/dot_zprofile"
     ],
     "shellcheck.ignorePatterns": {
-        "**/dot_zshrc": true
+        "**/dot_zshrc": true,
+        "**/dot_zprofile": true
     }
 }
