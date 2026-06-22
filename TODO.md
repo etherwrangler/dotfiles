@@ -19,3 +19,9 @@
   `chzhome/.chezmoiscripts/linux/run_onchange_before_debian-install-packages.sh.tmpl`.
 - Revisit the `/opt/nvim-linux-x86_64` removal/recreate flow before making
   Linux package management first-class.
+
+## zsh
+
+- Decide whether to add zoxide.
+- Decide whether to add fzf.
+- Decide whether to add atuin.
