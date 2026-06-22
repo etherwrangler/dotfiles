@@ -13,4 +13,28 @@ cask "{{ . }}"
 {{ end -}}
 EOF
 
+{{ range $entry := (.packages.pipx.common | default (list)) -}}
+package="{{ $entry.name }}"
+
+printf 'pipx: checking %s\n' "$package"
+if ! pipx list --short | awk '{ print $1 }' | grep -Fqx "$package"; then
+    printf 'pipx: installing %s\n' "$package"
+    pipx install --include-deps "$package"
+else
+    printf 'pipx: %s is already installed\n' "$package"
+fi
+
+{{ range ($entry.inject | default (list) | sortAlpha | uniq) -}}
+dependency="{{ . }}"
+
+printf 'pipx: checking %s injection in %s\n' "$dependency" "$package"
+if ! pipx runpip "$package" show "$dependency" >/dev/null 2>&1; then
+    printf 'pipx: injecting %s into %s\n' "$dependency" "$package"
+    pipx inject --include-deps "$package" "$dependency"
+else
+    printf 'pipx: %s is already available in %s\n' "$dependency" "$package"
+fi
+{{ end -}}
+{{ end -}}
+
 {{ end -}}

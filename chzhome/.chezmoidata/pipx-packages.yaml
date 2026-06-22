@@ -1,0 +1,11 @@
+packages:
+    pipx:
+        common: []
+        devtools:
+            - name: ansible
+              inject:
+                - ansible-lint
+        games: []
+        ittools: []
+        personal: []
+        work: []
