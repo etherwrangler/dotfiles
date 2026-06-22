@@ -1,6 +1,7 @@
 packages:
     pipx:
-        common: []
+        common:
+            - name: argcomplete
         devtools:
             - name: ansible
               inject:

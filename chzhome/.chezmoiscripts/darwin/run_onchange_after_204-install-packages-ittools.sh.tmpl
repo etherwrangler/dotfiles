@@ -24,7 +24,7 @@ else
     printf 'pipx: %s is already installed\n' "$package"
 fi
 
-{{ range ($entry.inject | default (list) | sortAlpha | uniq) -}}
+{{ range (get $entry "inject" | default (list) | sortAlpha | uniq) -}}
 dependency="{{ . }}"
 
 printf 'pipx: checking %s injection in %s\n' "$dependency" "$package"
