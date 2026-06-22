@@ -45,7 +45,6 @@ packages:
                     - steam
             ittools:
                 brews:
-                    - ansible
                     - iperf3
                     - mtr
                     - nmap
