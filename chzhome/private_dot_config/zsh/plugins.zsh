@@ -7,6 +7,9 @@ fi
 
 autoload -Uz compinit && compinit
 
+# Pipx Autocompletions
+eval "$(register-python-argcomplete pipx)"
+
 if [[ -r "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
