@@ -10,6 +10,11 @@
 - Add troubleshooting notes for common macOS and Windows setup failures.
 - Document how to refresh package prompt answers after machine tags change.
 
+## Windows
+
+- Add an init prompt for installing Windows Subsystem for Linux (WSL) with its
+  dedicated installation command.
+
 ## Linux Scope
 
 - Decide whether to expand first-class Linux support beyond Debian.
