@@ -1,4 +1,4 @@
-{{ if not .ephemeral }}
+{{ if (and (not .ephemeral) (ne .chezmoi.os "windows")) }}
 {{- $xdgDataHome := env "XDG_DATA_HOME" -}}
 {{- if eq $xdgDataHome "" -}}
 {{-   $xdgDataHome = joinPath .chezmoi.homeDir ".local/share" -}}
