@@ -1,0 +1,12 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+{{ if and (not .nopackages) (get . "installwsl") -}}
+
+Write-Host "Installing Windows Subsystem for Linux (WSL) and Ubuntu"
+wsl --install
+if ($LASTEXITCODE -ne 0) {
+  throw "Failed to install Windows Subsystem for Linux (exit code: $LASTEXITCODE)"
+}
+
+{{ end -}}

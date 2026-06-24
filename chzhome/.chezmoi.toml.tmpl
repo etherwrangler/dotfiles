@@ -5,6 +5,7 @@
 {{$games := false -}}{{/* true if this machine should have games */}}
 {{$ittools := false -}}{{/* true if this machine should have IT and network tools */}}
 {{$work := false -}}{{/* true if this machine is a work machine */}}
+{{$installwsl := false -}}{{/* true if Windows should install WSL and Ubuntu */}}
 {{$nopackages := false -}}{{/* true if this machine should not install any packages */}}
 {{$personal := false -}}{{/* true if this machine should have personal secrets */}}
 
@@ -28,6 +29,9 @@
 {{-     $ittools = promptBoolOnce . "ittools" "Install IT and Network Tools" -}}
 {{-     $personal = promptBoolOnce . "personal" "Install Personal Software and Secrets" -}}
 {{-     $work = promptBoolOnce . "work" "Install Work Software and Secrets" -}}
+{{-     if eq .chezmoi.os "windows" -}}
+{{-         $installwsl = promptBoolOnce . "installwsl" "Install Windows Subsystem for Linux (WSL) and Ubuntu" -}}
+{{-     end -}}
 {{- end -}}
 {{- end -}}
 
@@ -36,6 +40,7 @@
     ephemeral = {{ $ephemeral }}
     games = {{ $games }}
     headless = {{ $headless }}
+    installwsl = {{ $installwsl }}
     ittools = {{ $ittools }}
     nopackages = {{ $nopackages }}
     osid = {{ $osid | quote }}
