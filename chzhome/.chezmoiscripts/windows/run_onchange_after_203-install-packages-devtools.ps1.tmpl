@@ -1,0 +1,31 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+{{ if and (not .nopackages) (get . "devtools") -}}
+
+$failedPackages = @()
+$lastFailedExitCode = 0
+
+{{ range (.packages.windows.winget.devtools | default (list) | sortAlpha | uniq) -}}
+    Write-Host Installing winget package '{{ .}}'
+    winget install `
+      --exact --source winget --id {{ . }} `
+      --accept-source-agreements `
+      --accept-package-agreements `
+      --silent `
+      --disable-interactivity `
+      --no-upgrade
+    if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne 0x8a150061) {
+      Write-Warning "Failed to install package '{{ . }}' (exit code: $LASTEXITCODE)"
+      $failedPackages += "{{ . }}"
+      $lastFailedExitCode = $LASTEXITCODE
+    }
+{{ end }}
+
+if ($failedPackages.Length -gt 0) {
+  $failedPackagesStr = $failedPackages -join ', '
+  Write-Host "Failed to install the following packages: $failedPackagesStr"
+  exit $lastFailedExitCode
+}
+
+{{ end -}}
