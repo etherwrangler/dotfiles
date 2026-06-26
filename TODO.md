@@ -17,6 +17,8 @@
 
 ## zsh
 
+- Research whether Homebrew and other PATH setup should move from `.zshrc` to
+  `.zprofile`, including macOS startup-order caveats.
 - Decide whether to add zoxide.
 - Decide whether to add fzf.
 - Decide whether to add atuin.
