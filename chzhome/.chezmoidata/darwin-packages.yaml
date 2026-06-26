@@ -64,3 +64,14 @@ packages:
                 casks:
                     - webex
                     - wireshark
+        pipx:
+            common:
+                - name: argcomplete
+            devtools:
+                - name: ansible
+                  inject:
+                      - ansible-lint
+            games: []
+            ittools: []
+            personal: []
+            work: []

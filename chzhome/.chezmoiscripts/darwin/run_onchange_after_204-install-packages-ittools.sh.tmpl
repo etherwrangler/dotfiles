@@ -13,7 +13,7 @@ cask "{{ . }}"
 {{ end -}}
 EOF
 
-{{ range $entry := (.packages.pipx.ittools | default (list)) -}}
+{{ range $entry := (.packages.darwin.pipx.ittools | default (list)) -}}
 package="{{ $entry.name }}"
 
 printf 'pipx: checking %s\n' "$package"
