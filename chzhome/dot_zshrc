@@ -13,6 +13,7 @@ source_zsh_config history.zsh
 source_zsh_config options.zsh
 source_zsh_config aliases.zsh
 source_zsh_config bindings.zsh
+source_zsh_config ls-colors.zsh
 source_zsh_config completion.zsh
 source_zsh_config plugins.zsh
 
