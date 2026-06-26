@@ -11,13 +11,13 @@ if [[ -r "$NVM_DIR/bash_completion" ]]; then
 fi
 
 if [[ -d "$ZSH_PLUGIN_DIR/zsh-completions/src" ]]; then
-  fpath=("$ZSH_PLUGIN_DIR/zsh-completions/src" $fpath)
+  fpath=("$ZSH_PLUGIN_DIR/zsh-completions/src" $fpath) # noka: ZC1071
 fi
 
 autoload -Uz compinit && compinit
 
 # Pipx Autocompletions
-eval "$(register-python-argcomplete pipx)"
+eval "$(register-python-argcomplete pipx)" # noka: ZC1046, ZC1098
 
 if [[ -r "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$ZSH_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
