@@ -8,6 +8,7 @@ packages:
         - fd-find
         - fzf
         - git
+        - htop
         - pipx
         - ripgrep
         - starship
