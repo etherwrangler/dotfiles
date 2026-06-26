@@ -9,6 +9,7 @@ packages:
                     - fzf
                     - gnu-tar
                     - neovim
+                    - pipx
                     - ripgrep
                     - sshpass
                     - starship
