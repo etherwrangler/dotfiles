@@ -69,24 +69,33 @@ target.
 
 ## Debian
 
-Install chezmoi:
+Install chezmoi. Minimal Debian installs may not include `curl`, so use the
+`wget` form unless `curl` is already available:
 
 ```shell
 # With curl
 sh -c "$(curl -fsLS get.chezmoi.io)"
 
 # With wget
-sh -c "$(wget -qO- get.chezmoi.io)" 
+sh -c "$(wget -qO- get.chezmoi.io)"
 ```
 
-Initialize the repo:
+The installer places `chezmoi` in `~/bin`, which may not be on `PATH` until the
+dotfiles have been applied and the shell has been restarted. Use the explicit
+path for the initial bootstrap commands:
 
 ```shell
-chezmoi init etherwrangler
+~/bin/chezmoi init etherwrangler
 ```
 
 Review the pending changes before applying:
 
 ```shell
-chezmoi diff
+~/bin/chezmoi diff
+```
+
+Apply when the diff looks right:
+
+```shell
+~/bin/chezmoi apply
 ```
