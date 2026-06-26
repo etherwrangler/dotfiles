@@ -23,7 +23,12 @@ url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 refreshPeriod = "168h"
 
 {{ if and (eq .osid "linux-debian") (not .nopackages) -}}
-{{- $nvimArch := get (dict "amd64" "x86_64" "arm64" "arm64") .chezmoi.arch -}}
+["{{ joinPath $xdgDataHome "nvm" }}"]
+type = "git-repo"
+url = "https://github.com/nvm-sh/nvm.git"
+refreshPeriod = "168h"
+
+{{ $nvimArch := get (dict "amd64" "x86_64" "arm64" "arm64") .chezmoi.arch -}}
 {{- if ne $nvimArch "" }}
 {{- $nvimAsset := printf "nvim-linux-%s" $nvimArch }}
 [".local/opt/nvim"]
