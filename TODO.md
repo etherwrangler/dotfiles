@@ -12,13 +12,8 @@
 
 ## Linux Scope
 
-- Decide whether Linux package management should become part of this project.
-- If Linux package management is added, define the supported distros and package
-  manager behavior.
-- Review idempotency in
-  `chzhome/.chezmoiscripts/linux/run_onchange_before_debian-install-packages.sh.tmpl`.
-- Revisit the `/opt/nvim-linux-x86_64` removal/recreate flow before making
-  Linux package management first-class.
+- Decide whether to expand first-class Linux support beyond Debian.
+- Add more Debian package groups as needs emerge.
 
 ## zsh
 

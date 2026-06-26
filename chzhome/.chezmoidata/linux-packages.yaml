@@ -1,0 +1,40 @@
+packages:
+  debian:
+    apt:
+      common:
+        - bat
+        - curl
+        - fastfetch
+        - fd-find
+        - fzf
+        - git
+        - pipx
+        - ripgrep
+        - starship
+        - tealdeer
+        - tmux
+        - zoxide
+        - zsh
+      devtools:
+        - gh
+        - jq
+        - nodejs
+      games:
+      ittools:
+        - iperf3
+        - mtr
+        - nmap
+      personal:
+      work:
+    pipx:
+      common:
+        - name: argcomplete
+      devtools:
+        - name: ansible
+          inject:
+            - ansible-lint
+        - name: uv
+      games:
+      ittools:
+      personal:
+      work:

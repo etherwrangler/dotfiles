@@ -61,13 +61,10 @@ Apply when the diff looks right:
 chezmoi apply
 ```
 
-# Setup for Linux
+# Setup for Debian
 
-Linux support is secondary. Debian, WSL Debian, and devcontainers are used
-occasionally, but Linux package management is not yet a first-class project
-target.
-
-## Debian
+Debian, including WSL Debian, is a first-class target. Package installation is
+managed with `apt` unless the `nopackages` tag is enabled during init.
 
 Install chezmoi. Minimal Debian installs may not include `curl`, so use the
 `wget` form unless `curl` is already available:

@@ -23,6 +23,12 @@ Documents
 # Files to ignore if not on Linux
 {{ if ne .chezmoi.os "linux" }}
 .chezmoiscripts/linux/**
+.chezmoidata/linux-packages.yaml
+{{ end }}
+
+# Files to ignore unless Debian package installation is enabled
+{{ if not (and (eq .osid "linux-debian") (not .nopackages)) }}
+.local/bin/nvim
 {{ end }}
 
 # Files to ignore on headless systems

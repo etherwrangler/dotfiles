@@ -6,8 +6,8 @@ home directory.
 
 ## Supported Targets
 
-- First-class targets are macOS and Windows 11.
-- WSL Debian, native Debian, and devcontainers are occasionally used.
+- First-class targets are macOS, Windows 11, and Debian.
+- WSL Debian is supported through the Debian path.
 - Devcontainers are rare and should be treated as secondary.
 
 ## Chezmoi Command Policy
@@ -39,8 +39,7 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 
 - Windows packages are managed with `winget`.
 - macOS packages are managed with Homebrew.
-- Linux package management is currently outside the main project scope, but may
-  be added later.
+- Debian packages are managed with `apt`.
 - Package lists should live in `.chezmoidata`.
 - Keep one package data file per OS.
 - Package data should use a consistent shape across operating systems.

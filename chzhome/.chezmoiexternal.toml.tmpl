@@ -22,5 +22,19 @@ type = "git-repo"
 url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
 refreshPeriod = "168h"
 
+{{ if and (eq .osid "linux-debian") (not .nopackages) -}}
+{{- $nvimArch := get (dict "amd64" "x86_64" "arm64" "arm64") .chezmoi.arch -}}
+{{- if ne $nvimArch "" }}
+{{- $nvimAsset := printf "nvim-linux-%s" $nvimArch }}
+[".local/opt/nvim"]
+type = "archive"
+url = "https://github.com/neovim/neovim/releases/latest/download/{{ $nvimAsset }}.tar.gz"
+format = "tar.gz"
+stripComponents = 1
+exact = true
+refreshPeriod = "168h"
+
+{{ end -}}
+{{ end }}
 
 {{ end }}
