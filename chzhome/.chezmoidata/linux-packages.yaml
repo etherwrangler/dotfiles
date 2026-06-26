@@ -18,7 +18,7 @@ packages:
       devtools:
         - gh
         - jq
-        - nodejs
+        - npm
       games:
       ittools:
         - iperf3
