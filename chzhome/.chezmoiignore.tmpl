@@ -28,7 +28,7 @@ Documents
 
 # Files to ignore unless encrypted SSH config snippets are enabled
 {{ if not (and (hasKey . "sshSecrets") .sshSecrets) }}
-.ssh/conf/fgh.conf
+.ssh/conf/work.conf
 .ssh/conf/home.conf
 {{ end }}
 
