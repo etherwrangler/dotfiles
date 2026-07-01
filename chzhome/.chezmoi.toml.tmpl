@@ -8,6 +8,7 @@
 {{$installwsl := false -}}{{/* true if Windows should install WSL and Ubuntu */}}
 {{$nopackages := false -}}{{/* true if this machine should not install any packages */}}
 {{$personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{$sshSecrets := false -}}{{/* true if this machine should restore encrypted SSH config snippets */}}
 
 {{/* detect if linux and then add the distro the osid variable */}}
 {{- $osid := .chezmoi.os -}}
@@ -22,6 +23,7 @@
 {{- end -}}
 
 {{- if not (or ($ephemeral) ($headless) ) }}
+{{- $sshSecrets = promptBoolOnce . "sshSecrets" "Restore encrypted SSH config files" -}}
 {{- $nopackages = promptBoolOnce . "nopackages" "Block package installation" -}}
 {{- if not $nopackages -}} 
 {{-     $devtools = promptBoolOnce . "devtools" "Install Development Tools" -}}
@@ -35,6 +37,12 @@
 {{- end -}}
 {{- end -}}
 
+encryption = "age"
+
+[age]
+    identity = "~/.config/chezmoi/key.txt"
+    recipient = "age1jtuczhvm3fxtlvchkz9cuknslydkz4nltwl623nwlfk33nkza9ps385kuu"
+
 [data]
     devtools = {{ $devtools }}
     ephemeral = {{ $ephemeral }}
@@ -45,4 +53,5 @@
     nopackages = {{ $nopackages }}
     osid = {{ $osid | quote }}
     personal = {{ $personal }}
+    sshSecrets = {{ $sshSecrets }}
     work = {{ $work }}

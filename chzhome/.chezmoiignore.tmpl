@@ -26,6 +26,12 @@ Documents
 .chezmoidata/linux-packages.yaml
 {{ end }}
 
+# Files to ignore unless encrypted SSH config snippets are enabled
+{{ if not (and (hasKey . "sshSecrets") .sshSecrets) }}
+.ssh/conf/fgh.conf
+.ssh/conf/home.conf
+{{ end }}
+
 # Files to ignore unless Debian package installation is enabled
 {{ if not (and (eq .osid "linux-debian") (not .nopackages)) }}
 .local/bin/nvim

@@ -74,7 +74,9 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 
 ## Secrets And Sensitive Data
 
-- This repo does not currently use chezmoi encryption.
+- This repo uses chezmoi age encryption for secret-ish SSH config snippets.
+- The age recipient is public and may be committed, but the private age
+  identity must stay external to the repo.
 - Secrets are stored externally in Bitwarden.
 - Do not add secrets to this repo.
 - SSH config files are generally safe to edit, but do not expose private

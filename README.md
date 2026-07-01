@@ -4,6 +4,25 @@
 - Future cleanup, validation, and linting work is tracked in [TODO.md](TODO.md).
 - Review changes with `chezmoi diff` before applying them.
 
+# Encrypted Files
+
+This repo uses chezmoi age encryption for secret-ish SSH config snippets. During
+init, answer yes to `Restore encrypted SSH config files` only on machines that
+should receive those files. Before running `chezmoi diff` or `chezmoi apply` on
+those machines, restore the age identity from Vaultwarden to:
+
+```text
+~/.config/chezmoi/key.txt
+```
+
+The public age recipient is committed in `chzhome/.chezmoi.toml.tmpl`; only
+`key.txt` is secret. If `Restore encrypted SSH config files` is disabled, the
+encrypted SSH config snippets are ignored and `key.txt` is not required. If it
+is enabled before restoring `key.txt`, init can still render the config, but
+commands that need to decrypt encrypted files such as `chezmoi diff`,
+`chezmoi status`, and `chezmoi apply` will fail until the identity file is
+restored.
+
 # Setup for macOS
 
 Install chezmoi with Homebrew:
