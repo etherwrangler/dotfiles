@@ -32,6 +32,13 @@ Documents
 .ssh/conf/home.conf
 {{ end }}
 
+# Files to ignore unless SSH key generation is enabled
+{{ if not (and (hasKey . "sshKeys") .sshKeys) }}
+.chezmoiscripts/darwin/020-generate-ssh-keys.sh
+.chezmoiscripts/linux/020-generate-ssh-keys.sh
+.chezmoiscripts/windows/020-generate-ssh-keys.ps1
+{{ end }}
+
 # Files to ignore unless Debian package installation is enabled
 {{ if not (and (eq .osid "linux-debian") (not .nopackages)) }}
 .local/bin/nvim

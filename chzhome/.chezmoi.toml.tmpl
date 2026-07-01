@@ -8,6 +8,7 @@
 {{$installwsl := false -}}{{/* true if Windows should install WSL and Ubuntu */}}
 {{$nopackages := false -}}{{/* true if this machine should not install any packages */}}
 {{$personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{$sshKeys := false -}}{{/* true if this machine should generate per-device SSH keys */}}
 {{$sshSecrets := false -}}{{/* true if this machine should restore encrypted SSH config snippets */}}
 
 {{/* detect if linux and then add the distro the osid variable */}}
@@ -23,6 +24,7 @@
 {{- end -}}
 
 {{- if not (or ($ephemeral) ($headless) ) }}
+{{- $sshKeys = promptBoolOnce . "sshKeys" "Generate SSH keys" -}}
 {{- $sshSecrets = promptBoolOnce . "sshSecrets" "Restore encrypted SSH config files" -}}
 {{- $nopackages = promptBoolOnce . "nopackages" "Block package installation" -}}
 {{- if not $nopackages -}} 
@@ -53,5 +55,6 @@ encryption = "age"
     nopackages = {{ $nopackages }}
     osid = {{ $osid | quote }}
     personal = {{ $personal }}
+    sshKeys = {{ $sshKeys }}
     sshSecrets = {{ $sshSecrets }}
     work = {{ $work }}

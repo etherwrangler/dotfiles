@@ -31,6 +31,8 @@ The machine tags are defined and documented in `chzhome/.chezmoi.toml.tmpl`:
 - `nopackages`
 - `personal`
 - `work`
+- `sshKeys`
+- `sshSecrets`
 - `osid`
 
 `personal` and `work` may both be true for the same machine.

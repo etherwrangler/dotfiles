@@ -1,0 +1,40 @@
+#!/bin/sh
+set -eu
+
+SSH_DIR="${HOME}/.ssh"
+HOSTNAME="{{ .chezmoi.hostname }}"
+CIPHER="ed25519"
+
+mkdir -p "$SSH_DIR"
+chmod 700 "$SSH_DIR" 2>/dev/null || true
+
+if ! command -v ssh-keygen >/dev/null 2>&1; then
+    echo "ssh-keygen not found; skipping SSH key generation" >&2
+    exit 0
+fi
+
+generate_key() {
+    key_type="$1"
+    key_path="${SSH_DIR}/id_${CIPHER}_${key_type}"
+    public_key_path="${key_path}.pub"
+    comment="${key_type}-${HOSTNAME}-${CIPHER}"
+
+    if [ -f "$key_path" ]; then
+        echo "SSH key already exists: $key_path"
+        return
+    fi
+
+    if [ -e "$key_path" ] || [ -e "$public_key_path" ]; then
+        echo "SSH key path already exists without a private key: $key_path" >&2
+        echo "Skipping to avoid overwriting existing SSH material." >&2
+        return
+    fi
+
+    ssh-keygen -t "$CIPHER" -f "$key_path" -C "$comment" -N ""
+    chmod 600 "$key_path" 2>/dev/null || true
+    chmod 644 "$public_key_path" 2>/dev/null || true
+}
+
+generate_key github
+generate_key home
+generate_key work

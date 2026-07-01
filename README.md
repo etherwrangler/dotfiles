@@ -41,6 +41,10 @@ During init, chezmoi prompts for machine tags that control optional package
 groups and secrets-related files. Use `nopackages` when you want the dotfiles
 without package installation scripts.
 
+Answer yes to `Generate SSH keys` on new trusted devices that should create
+per-device `github`, `home`, and `work` SSH keys. Existing keys are not
+overwritten.
+
 Review the pending changes:
 
 ```shell
@@ -67,6 +71,10 @@ chezmoi init etherwrangler
 During init, chezmoi prompts for machine tags that control optional package
 groups and secrets-related files. Use `nopackages` when you want the dotfiles
 without package installation scripts.
+
+Answer yes to `Generate SSH keys` on new trusted devices that should create
+per-device `github`, `home`, and `work` SSH keys. Existing keys are not
+overwritten.
 
 Review the pending changes:
 
@@ -109,6 +117,10 @@ Review the pending changes before applying:
 ```shell
 ~/bin/chezmoi diff
 ```
+
+During init, answer yes to `Generate SSH keys` on new trusted devices that
+should create per-device `github`, `home`, and `work` SSH keys. Existing keys
+are not overwritten.
 
 Apply when the diff looks right:
 

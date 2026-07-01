@@ -1,0 +1,42 @@
+$ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+
+$sshDir = Join-Path $HOME ".ssh"
+$hostname = "{{ .chezmoi.hostname }}"
+$cipher = "ed25519"
+
+New-Item -ItemType Directory -Path $sshDir -Force | Out-Null
+
+$sshKeygen = Get-Command ssh-keygen -ErrorAction SilentlyContinue
+if ($null -eq $sshKeygen) {
+    Write-Warning "ssh-keygen not found; skipping SSH key generation"
+    exit 0
+}
+
+function New-MissingSshKey {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $KeyType
+    )
+
+    $keyPath = Join-Path $sshDir "id_${cipher}_${KeyType}"
+    $publicKeyPath = "${keyPath}.pub"
+    $comment = "${KeyType}-${hostname}-${cipher}"
+
+    if (Test-Path -LiteralPath $keyPath -PathType Leaf) {
+        Write-Host "SSH key already exists: $keyPath"
+        return
+    }
+
+    if ((Test-Path -LiteralPath $keyPath) -or (Test-Path -LiteralPath $publicKeyPath)) {
+        Write-Warning "SSH key path already exists without a private key: $keyPath"
+        Write-Warning "Skipping to avoid overwriting existing SSH material."
+        return
+    }
+
+    & $sshKeygen.Source -t $cipher -f $keyPath -C $comment -N ""
+}
+
+New-MissingSshKey -KeyType "github"
+New-MissingSshKey -KeyType "home"
+New-MissingSshKey -KeyType "work"
