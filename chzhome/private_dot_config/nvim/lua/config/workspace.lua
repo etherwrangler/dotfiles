@@ -8,7 +8,7 @@ local function terminal_options()
     return {
         cwd = vim.fn.getcwd(),
         env = {
-            STARSHIP_CONFIG = vim.fn.stdpath("config") .. "/starship-nvim.toml",
+            STARSHIP_CONFIG = vim.fn.expand("~/.config/starship-nvim.toml"),
         },
         win = {
             position = "right",
