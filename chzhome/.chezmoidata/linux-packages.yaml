@@ -42,6 +42,7 @@ packages:
     npm:
       devtools:
         - "@ansible/ansible-language-server"
+        - "@openai/codex"
         - bash-language-server
         - pyright
         - vscode-langservers-extracted
