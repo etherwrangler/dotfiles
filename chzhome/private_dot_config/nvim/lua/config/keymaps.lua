@@ -1,6 +1,7 @@
 local map = vim.keymap.set
 local conform = require("conform")
 local snacks = require("snacks")
+local workspace = require("config.workspace")
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
@@ -31,6 +32,8 @@ map("n", "<leader>fg", snacks.picker.git_files, { desc = "Find Git files" })
 map("n", "<leader>gs", snacks.picker.git_status, { desc = "Git status" })
 map("n", "<leader>gd", snacks.picker.git_diff, { desc = "Git diff" })
 map("n", "<leader>gl", snacks.picker.git_log, { desc = "Git log" })
+map("n", "<leader>iw", workspace.toggle, { desc = "Toggle IDE workspace" })
+map("n", "<leader>ic", workspace.toggle_codex, { desc = "Toggle Codex terminal" })
 
 if vim.fn.executable("gh") == 1 then
     map("n", "<leader>gi", snacks.picker.gh_issue, { desc = "GitHub issues" })
