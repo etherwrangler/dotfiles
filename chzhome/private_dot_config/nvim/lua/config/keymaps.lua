@@ -33,7 +33,7 @@ map("n", "<leader>gs", snacks.picker.git_status, { desc = "Git status" })
 map("n", "<leader>gd", snacks.picker.git_diff, { desc = "Git diff" })
 map("n", "<leader>gl", snacks.picker.git_log, { desc = "Git log" })
 map("n", "<leader>iw", workspace.toggle, { desc = "Toggle IDE workspace" })
-map("n", "<leader>ic", workspace.toggle_codex, { desc = "Toggle Codex terminal" })
+map("n", "<leader>it", workspace.toggle_terminal, { desc = "Toggle IDE terminal" })
 
 if vim.fn.executable("gh") == 1 then
     map("n", "<leader>gi", snacks.picker.gh_issue, { desc = "GitHub issues" })

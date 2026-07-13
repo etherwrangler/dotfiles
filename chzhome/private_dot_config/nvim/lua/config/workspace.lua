@@ -1,10 +1,9 @@
 local M = {}
 
-local codex_command = { "codex" }
 local workspace_picker
 local workspace_terminal
 
-local function codex_options()
+local function terminal_options()
     return {
         cwd = vim.fn.getcwd(),
         win = {
@@ -24,10 +23,10 @@ local function explorer()
     end
 end
 
-local function codex_terminal(create)
-    local options = codex_options()
+local function terminal(create)
+    local options = terminal_options()
     options.create = create
-    return require("snacks").terminal.get(codex_command, options)
+    return require("snacks").terminal.get(nil, options)
 end
 
 local function focus(win)
@@ -39,25 +38,20 @@ end
 local function hide_workspace()
     local picker = explorer()
     local main = picker and picker.main or vim.api.nvim_get_current_win()
-    local terminal = workspace_terminal or codex_terminal(false)
+    local right_terminal = workspace_terminal or terminal(false)
 
     if picker then
         picker:close()
         workspace_picker = nil
     end
-    if terminal and terminal:win_valid() then
-        terminal:hide()
+    if right_terminal and right_terminal:win_valid() then
+        right_terminal:hide()
     end
 
     focus(main)
 end
 
 local function show_workspace()
-    if vim.fn.executable(codex_command[1]) ~= 1 then
-        vim.notify("The codex executable is not available in Neovim's PATH", vim.log.levels.ERROR)
-        return
-    end
-
     local main = vim.api.nvim_get_current_win()
     local picker = explorer()
     if not picker then
@@ -69,7 +63,7 @@ local function show_workspace()
         })
     end
     workspace_picker = picker
-    workspace_terminal = codex_terminal(true)
+    workspace_terminal = terminal(true)
 
     if picker.shown then
         focus(picker.main or main)
@@ -79,8 +73,8 @@ end
 
 function M.toggle()
     local picker = explorer()
-    local terminal = workspace_terminal or codex_terminal(false)
-    local visible = picker ~= nil or (terminal and terminal:win_valid())
+    local right_terminal = workspace_terminal or terminal(false)
+    local visible = picker ~= nil or (right_terminal and right_terminal:win_valid())
 
     if visible then
         hide_workspace()
@@ -89,21 +83,16 @@ function M.toggle()
     end
 end
 
-function M.toggle_codex()
-    if vim.fn.executable(codex_command[1]) ~= 1 then
-        vim.notify("The codex executable is not available in Neovim's PATH", vim.log.levels.ERROR)
-        return
-    end
-
-    require("snacks").terminal.toggle(codex_command, codex_options())
+function M.toggle_terminal()
+    require("snacks").terminal.toggle(nil, terminal_options())
 end
 
 function M.setup()
     vim.api.nvim_create_user_command("IDEWorkspaceToggle", M.toggle, {
         desc = "Toggle the IDE workspace",
     })
-    vim.api.nvim_create_user_command("CodexTerminalToggle", M.toggle_codex, {
-        desc = "Toggle the Codex terminal",
+    vim.api.nvim_create_user_command("IDEWorkspaceTerminalToggle", M.toggle_terminal, {
+        desc = "Toggle the IDE workspace terminal",
     })
 end
 
