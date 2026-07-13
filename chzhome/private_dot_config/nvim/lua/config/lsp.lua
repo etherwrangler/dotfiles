@@ -33,4 +33,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.lsp.enable({ "ansiblels", "yamlls" })
+vim.lsp.enable({ "ansiblels", "bashls", "jsonls", "lua_ls", "pyright", "yamlls" })

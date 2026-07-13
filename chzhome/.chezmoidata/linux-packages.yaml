@@ -42,4 +42,7 @@ packages:
     npm:
       devtools:
         - "@ansible/ansible-language-server"
+        - bash-language-server
+        - pyright
+        - vscode-langservers-extracted
         - yaml-language-server
