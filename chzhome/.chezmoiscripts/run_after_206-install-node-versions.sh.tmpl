@@ -1,0 +1,33 @@
+{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .osid "linux-debian")) -}}
+#!/bin/sh
+
+set -eu
+
+NVM_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/nvm"
+export NVM_DIR
+
+if [ ! -r "$NVM_DIR/nvm.sh" ]; then
+    printf 'nvm: %s is not readable\n' "$NVM_DIR/nvm.sh" >&2
+    exit 1
+fi
+
+# nvm is intentionally sourced here because it is implemented as a shell function.
+# shellcheck source=/dev/null
+. "$NVM_DIR/nvm.sh"
+
+printf 'nvm: installing the latest LTS release\n'
+nvm install --lts
+
+printf 'nvm: installing the latest current release\n'
+nvm install node
+
+printf 'nvm: setting the default release to LTS\n'
+nvm alias default 'lts/*'
+
+{{ if eq .chezmoi.os "darwin" -}}
+if brew list --formula node >/dev/null 2>&1; then
+    printf 'homebrew: removing node now managed by nvm\n'
+    brew uninstall node
+fi
+{{ end -}}
+{{ end -}}

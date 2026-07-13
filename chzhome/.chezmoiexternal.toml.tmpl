@@ -27,12 +27,15 @@ type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm.git"
 refreshPeriod = "168h"
 
-{{ if and (eq .osid "linux-debian") (not .nopackages) -}}
+{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .osid "linux-debian")) -}}
 ["{{ joinPath $xdgDataHome "nvm" }}"]
 type = "git-repo"
 url = "https://github.com/nvm-sh/nvm.git"
 refreshPeriod = "168h"
 
+{{ end -}}
+
+{{ if and (eq .osid "linux-debian") (not .nopackages) -}}
 {{ $nvimArch := get (dict "amd64" "x86_64" "arm64" "arm64") .chezmoi.arch -}}
 {{- if ne $nvimArch "" }}
 {{- $nvimAsset := printf "nvim-linux-%s" $nvimArch }}

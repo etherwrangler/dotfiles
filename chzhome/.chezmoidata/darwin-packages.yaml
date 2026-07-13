@@ -33,7 +33,6 @@ packages:
                 brews:
                     - gh
                     - jq
-                    - node
                     - uv
                 casks:
                     - docker-desktop
