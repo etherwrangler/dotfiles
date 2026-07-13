@@ -2,13 +2,20 @@ local M = {}
 
 local workspace_picker
 local workspace_terminal
+local previous_laststatus
 
 local function terminal_options()
     return {
         cwd = vim.fn.getcwd(),
+        env = {
+            STARSHIP_CONFIG = vim.fn.stdpath("config") .. "/starship-nvim.toml",
+        },
         win = {
             position = "right",
             width = 0.35,
+            wo = {
+                winbar = "",
+            },
         },
     }
 end
@@ -47,11 +54,18 @@ local function hide_workspace()
     if right_terminal and right_terminal:win_valid() then
         right_terminal:hide()
     end
+    if previous_laststatus ~= nil then
+        vim.o.laststatus = previous_laststatus
+        previous_laststatus = nil
+    end
 
     focus(main)
 end
 
 local function show_workspace()
+    previous_laststatus = previous_laststatus or vim.o.laststatus
+    vim.o.laststatus = 0
+
     local main = vim.api.nvim_get_current_win()
     local picker = explorer()
     if not picker then
@@ -72,11 +86,7 @@ local function show_workspace()
 end
 
 function M.toggle()
-    local picker = explorer()
-    local right_terminal = workspace_terminal or terminal(false)
-    local visible = picker ~= nil or (right_terminal and right_terminal:win_valid())
-
-    if visible then
+    if previous_laststatus ~= nil then
         hide_workspace()
     else
         show_workspace()
