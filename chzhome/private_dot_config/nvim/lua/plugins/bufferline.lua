@@ -1,5 +1,15 @@
+local colors = require("catppuccin.palettes").get_palette()
+
 require("bufferline").setup({
-    highlights = require("catppuccin.special.bufferline").get_theme(),
+    highlights = require("catppuccin.special.bufferline").get_theme({
+        custom = {
+            all = {
+                separator = { fg = colors.surface1 },
+                separator_visible = { fg = colors.surface1 },
+                separator_selected = { fg = colors.lavender },
+            },
+        },
+    }),
     options = {
         diagnostics = "nvim_lsp",
         separator_style = "thin",
