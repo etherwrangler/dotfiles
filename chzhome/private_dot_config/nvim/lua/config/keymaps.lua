@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local conform = require("conform")
 local snacks = require("snacks")
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
@@ -7,6 +8,9 @@ map("n", "<leader>q", "<cmd>quit<CR>", { desc = "Quit window" })
 map("n", "<leader>qa", "<cmd>qall<CR>", { desc = "Quit Neovim" })
 map("n", "<leader>wqa", "<cmd>wqall<CR>", { desc = "Write all and quit Neovim" })
 map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic details" })
+map("n", "<leader>lf", function()
+    conform.format()
+end, { desc = "Format buffer" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Focus left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Focus lower window" })

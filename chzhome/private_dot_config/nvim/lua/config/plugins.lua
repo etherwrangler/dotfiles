@@ -1,5 +1,6 @@
 vim.pack.add({
     { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+    { src = "https://github.com/stevearc/conform.nvim", name = "conform.nvim" },
     { src = "https://github.com/nvim-mini/mini.icons", name = "mini.icons" },
     { src = "https://github.com/folke/snacks.nvim", name = "snacks.nvim" },
 })
@@ -12,4 +13,5 @@ require("catppuccin").setup({
 vim.cmd.colorscheme("catppuccin-mocha")
 
 require("mini.icons").setup()
+require("plugins.conform")
 require("plugins.snacks")
