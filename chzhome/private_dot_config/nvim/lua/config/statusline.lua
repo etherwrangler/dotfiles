@@ -145,7 +145,7 @@ function M.setup()
         group = group,
         callback = M.refresh_branch,
     })
-    vim.api.nvim_create_autocmd("DiagnosticChanged", {
+    vim.api.nvim_create_autocmd({ "DiagnosticChanged", "ModeChanged", "WinEnter", "WinLeave" }, {
         group = group,
         callback = function()
             vim.cmd.redrawstatus()

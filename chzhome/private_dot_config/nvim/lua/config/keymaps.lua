@@ -44,3 +44,7 @@ map("x", "<", "<gv", { desc = "Indent left and reselect" })
 map("x", ">", ">gv", { desc = "Indent right and reselect" })
 
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Leave terminal mode" })
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Focus left window" })
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus lower window" })
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus upper window" })
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right window" })
