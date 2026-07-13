@@ -26,6 +26,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.diagnostic.jump({ count = 1, float = true })
         end, "Next diagnostic")
 
+        if client:supports_method("textDocument/formatting") then
+            map("n", "<leader>lf", function()
+                vim.lsp.buf.format({ bufnr = event.buf })
+            end, "Format buffer")
+        end
+
         if client:supports_method("textDocument/completion") then
             vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
             map("i", "<C-Space>", vim.lsp.completion.get, "Trigger completion")
