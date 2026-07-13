@@ -4,6 +4,7 @@ add_newline = true
 format = """
 [](surface0)\
 $os\
+$username\
 [](bg:peach fg:surface0)\
 $directory\
 [ ](fg:peach)\
@@ -47,6 +48,12 @@ RedHatEnterprise = "󱄛"
 SUSE = ""
 Ubuntu = "󰕈"
 Windows = "󰍲"
+
+[username]
+format = "[ $user ]($style)"
+show_always = true
+style_root = "bg:surface0 fg:text"
+style_user = "bg:surface0 fg:text"
 
 [directory]
 format = "[ $path ]($style)"
