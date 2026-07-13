@@ -8,6 +8,7 @@ vim.opt.sidescrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "100"
 vim.opt.fillchars = { eob = " " }
+vim.opt.termguicolors = true
 
 -- Editing
 vim.opt.expandtab = true
