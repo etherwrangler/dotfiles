@@ -12,7 +12,7 @@ local function terminal_options()
         },
         win = {
             position = "right",
-            width = 0.35,
+            width = 0.25,
             wo = {
                 winbar = "",
             },
