@@ -5,6 +5,12 @@
     "Lua.diagnostics.disable": [
         "different-requires"
     ],
+    "cSpell.enabledFileTypes": {
+        "*": false,
+        "git-commit": true,
+        "markdown": true,
+        "plaintext": true
+    },
     "zshellcheck.filePatterns": [
         "**/*.zsh",
         "**/*.zsh-theme",
