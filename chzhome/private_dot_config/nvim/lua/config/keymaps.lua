@@ -4,6 +4,8 @@ local snacks = require("snacks")
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
 map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
 map("n", "<leader>q", "<cmd>quit<CR>", { desc = "Quit window" })
+map("n", "<leader>qa", "<cmd>qall<CR>", { desc = "Quit Neovim" })
+map("n", "<leader>wqa", "<cmd>wqall<CR>", { desc = "Write all and quit Neovim" })
 map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic details" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Focus left window" })
