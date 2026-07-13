@@ -7,6 +7,11 @@ vim.pack.add({
 })
 
 require("catppuccin").setup({
+    dim_inactive = {
+        enabled = true,
+        percentage = 0.15,
+        shade = "dark",
+    },
     integrations = {
         snacks = true,
     },
