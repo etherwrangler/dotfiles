@@ -75,3 +75,7 @@ packages:
             ittools: []
             personal: []
             work: []
+        npm:
+            devtools:
+                - "@ansible/ansible-language-server"
+                - yaml-language-server

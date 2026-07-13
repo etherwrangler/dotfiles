@@ -1,0 +1,37 @@
+{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .osid "linux-debian")) -}}
+{{- $npmPackages := list -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $npmPackages = .packages.darwin.npm.devtools | default (list) -}}
+{{- else if eq .osid "linux-debian" -}}
+{{-   $npmPackages = .packages.debian.npm.devtools | default (list) -}}
+{{- end -}}
+#!/bin/sh
+
+set -eu
+
+NVM_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/nvm"
+export NVM_DIR
+
+if [ ! -r "$NVM_DIR/nvm.sh" ]; then
+    printf 'nvm: %s is not readable\n' "$NVM_DIR/nvm.sh" >&2
+    exit 1
+fi
+
+# nvm is intentionally sourced here because it is implemented as a shell function.
+# shellcheck source=/dev/null
+. "$NVM_DIR/nvm.sh"
+nvm use default >/dev/null
+
+{{ range ($npmPackages | sortAlpha | uniq) -}}
+package={{ . | quote }}
+
+printf 'npm: checking %s\n' "$package"
+if npm list --global --depth=0 "$package" >/dev/null 2>&1; then
+    printf 'npm: %s is already installed\n' "$package"
+else
+    printf 'npm: installing %s\n' "$package"
+    npm install --global "$package"
+fi
+
+{{ end -}}
+{{ end -}}
