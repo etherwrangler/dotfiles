@@ -2,7 +2,7 @@ local M = {}
 
 local workspace_picker
 local workspace_terminal
-local previous_laststatus
+local workspace_active = false
 
 local function terminal_options()
     return {
@@ -54,18 +54,12 @@ local function hide_workspace()
     if right_terminal and right_terminal:win_valid() then
         right_terminal:hide()
     end
-    if previous_laststatus ~= nil then
-        vim.o.laststatus = previous_laststatus
-        previous_laststatus = nil
-    end
+    workspace_active = false
 
     focus(main)
 end
 
 local function show_workspace()
-    previous_laststatus = previous_laststatus or vim.o.laststatus
-    vim.o.laststatus = 0
-
     local main = vim.api.nvim_get_current_win()
     local picker = explorer()
     if not picker then
@@ -78,6 +72,7 @@ local function show_workspace()
     end
     workspace_picker = picker
     workspace_terminal = terminal(true)
+    workspace_active = true
 
     if picker.shown then
         focus(picker.main or main)
@@ -86,7 +81,7 @@ local function show_workspace()
 end
 
 function M.toggle()
-    if previous_laststatus ~= nil then
+    if workspace_active then
         hide_workspace()
     else
         show_workspace()
