@@ -10,6 +10,7 @@ packages:
                     - gnu-tar
                     - neovim
                     - pipx
+                    - powershell
                     - ripgrep
                     - sshpass
                     - starship
@@ -25,7 +26,6 @@ packages:
                     - font-jetbrains-mono-nerd-font
                     - font-meslo-lg-nerd-font
                     - obsidian
-                    - powershell
                     - rectangle
                     - visual-studio-code
                     - wezterm
