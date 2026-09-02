@@ -1,0 +1,51 @@
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+{{ if and (not .nopackages) (get . "devtools") -}}
+
+$pythonVersion = "3.14"
+$env:UV_HTTP_RETRIES = "10"
+$env:UV_HTTP_TIMEOUT = "120"
+$uvCommand = Get-Command uv -ErrorAction SilentlyContinue
+
+if ($null -ne $uvCommand) {
+    $uvPath = $uvCommand.Source
+} else {
+    $wingetPackages = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages"
+    $uvPackageDirs = Get-ChildItem `
+        -LiteralPath $wingetPackages `
+        -Directory `
+        -Filter "astral-sh.uv_*" `
+        -ErrorAction SilentlyContinue
+    $uvExecutable = $uvPackageDirs |
+        ForEach-Object {
+            Get-ChildItem `
+                -LiteralPath $_.FullName `
+                -File `
+                -Filter "uv.exe" `
+                -ErrorAction SilentlyContinue
+        } |
+        Select-Object -First 1
+
+    if ($null -eq $uvExecutable) {
+        throw "uv was not found on PATH or in the WinGet packages directory"
+    }
+
+    $uvPath = $uvExecutable.FullName
+}
+
+Write-Host "Installing uv-managed Python $pythonVersion as the default Python"
+& $uvPath `
+    --system-certs `
+    --preview-features python-install-default `
+    python install $pythonVersion --default
+if ($LASTEXITCODE -ne 0) {
+    throw "uv failed to install Python $pythonVersion (exit code: $LASTEXITCODE)"
+}
+
+& $uvPath python update-shell
+if ($LASTEXITCODE -ne 0) {
+    throw "uv failed to add its Python executable directory to PATH (exit code: $LASTEXITCODE)"
+}
+
+{{ end -}}

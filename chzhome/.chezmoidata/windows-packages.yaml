@@ -14,6 +14,7 @@ packages:
         - Mozilla.Firefox
         - Starship.Starship
       devtools:
+        - astral-sh.uv
         - GitHub.cli
       games:
         - FTB.App
