@@ -34,7 +34,10 @@ function New-MissingSshKey {
         return
     }
 
-    & $sshKeygen.Source -t $cipher -f $keyPath -C $comment -N ""
+    & $sshKeygen.Source -t $cipher -f $keyPath -C $comment -N '""'
+    if ($LASTEXITCODE -ne 0) {
+        throw "ssh-keygen failed for $keyPath with exit code $LASTEXITCODE"
+    }
 }
 
 New-MissingSshKey -KeyType "github"
