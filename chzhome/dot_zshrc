@@ -27,6 +27,11 @@ if (( $+commands[tea] )); then
   source <(tea completion zsh)
 fi
 
+# Source chezmoi shell completions
+if (( $+commands[chezmoi] )); then
+  source <(chezmoi completion zsh)
+fi
+
 # Add Starship
 eval "$(starship init zsh)" # noka: ZC1046, ZC1098
 
