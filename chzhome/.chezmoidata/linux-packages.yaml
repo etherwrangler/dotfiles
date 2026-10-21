@@ -1,32 +1,44 @@
 packages:
-  debian:
-    apt:
-      common:
-        - bat
-        - curl
-        - fastfetch
-        - fd-find
-        - fzf
-        - git
-        - htop
-        - pipx
-        - ripgrep
-        - starship
-        - tealdeer
-        - tmux
-        - unzip
-        - zoxide
-        - zsh
-      devtools:
-        - gh
-        - jq
-      games:
-      ittools:
-        - iperf3
-        - mtr
-        - nmap
-      personal:
-      work:
+  linux:
+    # Distribution keys match ID from /etc/os-release.
+    debian:
+      apt:
+        common:
+          - bat
+          - curl
+          - fastfetch
+          - fd-find
+          - fzf
+          - git
+          - htop
+          - pipx
+          - ripgrep
+          - starship
+          - tealdeer
+          - tmux
+          - unzip
+          - zoxide
+          - zsh
+        devtools:
+          - gh
+          - jq
+        games:
+        ittools:
+          - iperf3
+          - mtr
+          - nmap
+        personal:
+        work:
+        versions: {}
+    ubuntu:
+      apt:
+        common:
+        devtools:
+        games:
+        ittools:
+        personal:
+        work:
+        versions: {}
     pipx:
       common:
         - name: argcomplete

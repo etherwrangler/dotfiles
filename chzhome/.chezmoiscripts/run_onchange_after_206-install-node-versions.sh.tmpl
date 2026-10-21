@@ -1,4 +1,4 @@
-{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .osid "linux-debian")) -}}
+{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
 #!/bin/sh
 
 set -eu

@@ -1,9 +1,9 @@
-{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .osid "linux-debian")) -}}
+{{ if and (not .nopackages) (get . "devtools") (or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux")) -}}
 {{- $npmPackages := list -}}
 {{- if eq .chezmoi.os "darwin" -}}
 {{-   $npmPackages = .packages.darwin.npm.devtools | default (list) -}}
-{{- else if eq .osid "linux-debian" -}}
-{{-   $npmPackages = .packages.debian.npm.devtools | default (list) -}}
+{{- else if eq .chezmoi.os "linux" -}}
+{{-   $npmPackages = .packages.linux.npm.devtools | default (list) -}}
 {{- end -}}
 #!/bin/sh
 
