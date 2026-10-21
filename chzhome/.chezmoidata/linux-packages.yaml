@@ -1,61 +1,81 @@
 packages:
-  linux:
-    # Distribution keys match ID from /etc/os-release.
-    debian:
-      apt:
-        common:
-          - bat
-          - curl
-          - fastfetch
-          - fd-find
-          - fzf
-          - git
-          - htop
-          - pipx
-          - ripgrep
-          - starship
-          - tealdeer
-          - tmux
-          - unzip
-          - zoxide
-          - zsh
-        devtools:
-          - gh
-          - jq
-        games:
-        ittools:
-          - iperf3
-          - mtr
-          - nmap
-        personal:
-        work:
-        versions: {}
-    ubuntu:
-      apt:
-        common:
-        devtools:
-        games:
-        ittools:
-        personal:
-        work:
-        versions: {}
-    pipx:
-      common:
-        - name: argcomplete
-      devtools:
-        - name: ansible
-          inject:
-            - ansible-lint
-        - name: uv
-      games:
-      ittools:
-      personal:
-      work:
-    npm:
-      devtools:
-        - "@ansible/ansible-language-server"
-        - "@openai/codex"
-        - bash-language-server
-        - pyright
-        - vscode-langservers-extracted
-        - yaml-language-server
+    linux:
+        # Distribution keys match ID from /etc/os-release.
+        debian:
+            apt:
+                common:
+                    - bat
+                    - btop
+                    - curl
+                    - fastfetch
+                    - fd-find
+                    - fonts-jetbrains-mono
+                    - fzf
+                    - git
+                    - htop
+                    - pipx
+                    - ripgrep
+                    - starship
+                    - tealdeer
+                    - tmux
+                    - unzip
+                    - zoxide
+                    - zsh
+                devtools:
+                    - gh
+                    - jq
+                games:
+                ittools:
+                    - iperf3
+                    - mtr
+                    - nmap
+                personal:
+                work:
+                versions: {}
+        ubuntu:
+            apt:
+                common:
+                    - bat
+                    - curl
+                    - fastfetch
+                    - fd-find
+                    - fonts-jetbrains-mono
+                    - fzf
+                    - git
+                    - htop
+                    - pipx
+                    - ripgrep
+                    - starship
+                    - tealdeer
+                    - tmux
+                    - unzip
+                    - zoxide
+                    - zsh
+                devtools:
+                    - gh
+                    - jq
+                games:
+                ittools:
+                    - iperf3
+                    - mtr
+                    - nmap
+                personal:
+                work:
+                versions: {}
+        pipx:
+            common:
+                - name: argcomplete
+            devtools:
+                - name: uv
+            games:
+            ittools:
+            personal:
+            work:
+        npm:
+            devtools:
+                - "@ansible/ansible-language-server"
+                - "@openai/codex"
+                - bash-language-server
+                - pyright
+                - vscode-langservers-extracted
+                - yaml-language-server
