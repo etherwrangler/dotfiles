@@ -26,6 +26,7 @@ packages:
                     - firefox
                     - font-jetbrains-mono-nerd-font
                     - font-meslo-lg-nerd-font
+                    - halloy
                     - obsidian
                     - rectangle
                     - visual-studio-code
