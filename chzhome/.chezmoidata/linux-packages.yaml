@@ -23,6 +23,7 @@ packages:
                 devtools:
                     - gh
                     - jq
+                    - tea-cli
                 games:
                 ittools:
                     - iperf3
@@ -52,6 +53,7 @@ packages:
                 devtools:
                     - gh
                     - jq
+                    - tea-cli
                 games:
                 ittools:
                     - iperf3
