@@ -35,7 +35,7 @@ packages:
                 brews:
                     - ansible
                     - ansible-lint
-                    - ansible/ansible-language-server
+                    - ansible-language-server
                     - black
                     - gh
                     - jq
