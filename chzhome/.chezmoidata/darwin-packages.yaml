@@ -33,9 +33,17 @@ packages:
                     - wezterm
             devtools:
                 brews:
+                    - ansible
+                    - ansible-lint
+                    - ansible/ansible-language-server
+                    - black
                     - gh
                     - jq
                     - lua-language-server
+                    - molecule
+                    - pytest
+                    - ruff
+                    - tox
                     - uv
                 casks:
                     - docker-desktop
@@ -48,6 +56,7 @@ packages:
                     - steam
             ittools:
                 brews:
+                    - ansible
                     - iperf3
                     - mtr
                     - nmap
